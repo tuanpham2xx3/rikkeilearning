@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Nộp hồ sơ ứng tuyển</h1>
+    <form action="">
+      <fieldset>
+        <legend>Thông tin liên hệ</legend>
+        <label for="fname">Họ và tên:</label>
+        <input type="text" placeholder="Nhập họ và tên..." /> <br />
+        <br />
+        <label for="phone">Số điện thoại:</label>
+        <input
+          type="number"
+          name="phone"
+          required
+          pattern="^0[1-9]\d{8}$"
+          placeholder="0912345678"
+        />
+      </fieldset>
+      <fieldset>
+        <legend>Hồ sơ đính kèm</legend>
+        <label for="fileupload">Tải lên CV (Định dạng PDF/Word)</label>
+        <input type="file" name="fileupload" accept=".PDF,.doc,.docx" />
+      </fieldset>
+      <button>Xác nhận đặt vé</button>
+    </form>
+  </body>
+</html>
