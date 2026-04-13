@@ -1,0 +1,20 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+.banner {
+    width: 100%;
+    padding: 60px 0;
+    background-color: #212c3d;
+}
+
+.title {
+    color: #ffffff;
+    text-align: center;
+    text-transform: uppercase;
+    margin: 0;
+    font-size: 32px;
+    letter-spacing: 1.5px;
+}

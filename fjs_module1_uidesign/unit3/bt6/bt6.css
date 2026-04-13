@@ -1,0 +1,28 @@
+body {
+  font-family: Arial, sans-serif;
+  color: #4a4a4a;
+  display: flex;
+  justify-content: center;
+  padding: 50px;
+}
+.promo-box {
+  width: 600px;
+  padding: 30px;
+  border: 2px solid #e67e22;
+  border-radius: 8px;
+  background: #f4eedd url("cafe.png") no-repeat top right;
+}
+
+.promo-title {
+  color: #d35400;
+  text-align: center;
+  margin-top: 0;
+  font-size: 24px;
+}
+
+.promo-desc {
+  text-align: justify;
+  line-height: 1.6;
+  font-size: 16px;
+  margin-bottom: 0;
+}
