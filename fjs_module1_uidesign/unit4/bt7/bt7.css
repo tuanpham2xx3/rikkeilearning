@@ -1,0 +1,27 @@
+* {
+  box-sizing: border-box;
+}
+.cate-list {
+  text-align: center;
+  width: 100%;
+  background-color: rgb(201, 201, 201);
+  padding: 30px 0px;
+}
+.category-block {
+  display: inline-block;
+  width: 33%;
+  border: 1px solid grey;
+  background-color: white;
+  padding: 15px 0px;
+}
+.price {
+  color: red;
+  font-weight: bold;
+}
+button {
+  background-color: blue;
+  color: aliceblue;
+  cursor: pointer;
+  border: none;
+  padding: 8px 15px;
+}

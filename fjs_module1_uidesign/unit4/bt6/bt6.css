@@ -1,0 +1,18 @@
+.category-ctn {
+  text-align: center;
+  padding: 20px;
+}
+.title {
+  font-size: 20px;
+}
+.category-item {
+  display: inline-block;
+  color: black;
+  text-decoration: none;
+  min-width: 120px;
+  padding: 12px 20px;
+  margin: 5px;
+  font-weight: bold;
+  border: 1.5px solid blue;
+  border-radius: 8px;
+}

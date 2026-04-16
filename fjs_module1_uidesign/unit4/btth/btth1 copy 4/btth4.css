@@ -1,0 +1,29 @@
+.box {
+  display: inline-block;
+  width: 150px;
+  height: 150px;
+  background-color: #3498db;
+  color: white;
+  text-align: center;
+  line-height: 150px;
+  margin: 10px;
+  border-radius: 8px;
+}
+
+.hidden-none {
+  display: none;
+}
+
+.hidden-visibility {
+  visibility: hidden;
+}
+
+.box-1 {
+  background-color: green;
+}
+.box-2 {
+  background-color: yellow;
+}
+.box-3 {
+  background-color: purple;
+}
