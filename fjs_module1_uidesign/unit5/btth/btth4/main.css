@@ -1,0 +1,33 @@
+body {
+  background-color: #f8f9fa;
+  font-family: sans-serif;
+}
+.services-section {
+  padding: 40px 20px;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+  color: white;
+}
+.title {
+  color: #333;
+  margin-bottom: 24px;
+  font-size: 20px;
+}
+.services-container {
+  display: flex;
+  gap: 16px;
+}
+.service-card {
+  flex: 1;
+  background-color: #007bff;
+  font-weight: bold;
+  padding: 24px 16px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.service-card:hover {
+  opacity: 0.9;
+}

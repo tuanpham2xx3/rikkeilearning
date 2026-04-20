@@ -1,0 +1,25 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 20px;
+  margin: 20px 20px;
+  color: white;
+  background-color: rgb(4, 0, 54);
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+ul {
+  list-style-type: none;
+}
+li {
+  display: inline-block;
+  margin: 0 10px;
+}
