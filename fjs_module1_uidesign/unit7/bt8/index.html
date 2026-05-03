@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Unit 7 - BT8 | Dark Mode Bảng Giá</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            fontFamily: { sans: ["Inter", "ui-sans-serif", "system-ui"] },
+          },
+        },
+      };
+    </script>
+  </head>
+
+  <body class="font-sans bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-50">
+    <main class="min-h-screen flex items-center justify-center px-4 py-12">
+      <section
+        class="w-full max-w-sm rounded-2xl bg-white text-slate-900 shadow-lg ring-1 ring-black/5 p-8 text-center
+               dark:bg-slate-900 dark:text-slate-50 dark:ring-white/10"
+        aria-label="Bảng giá tour"
+      >
+        <h1 class="text-base font-semibold tracking-tight">Tour Đà Lạt</h1>
+        <p class="mt-1 text-xs text-slate-500 dark:text-slate-300">3 Ngày 2 Đêm</p>
+
+        <div class="mt-6">
+          <p class="text-3xl font-bold tracking-tight text-blue-600 dark:text-blue-400">
+            2.500.000đ <span class="text-xs font-medium text-slate-500 dark:text-slate-300">/khách</span>
+          </p>
+        </div>
+
+        <ul class="mt-6 space-y-2 text-sm text-slate-600 dark:text-slate-200">
+          <li>Khách sạn 4 sao trung tâm</li>
+          <li>Xe Limousine đưa đón tận nơi</li>
+          <li>Vé tham quan tất cả các điểm</li>
+        </ul>
+
+        <button
+          type="button"
+          class="mt-7 inline-flex w-full items-center justify-center rounded-xl bg-blue-600 px-4 py-3 text-sm font-semibold text-white
+                 shadow-sm hover:bg-blue-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2
+                 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus-visible:ring-offset-slate-900"
+        >
+          ĐẶT TOUR NGAY
+        </button>
+      </section>
+
+      <button
+        id="toggleTheme"
+        type="button"
+        class="fixed bottom-6 right-6 rounded-xl bg-slate-200 px-4 py-2 text-xs font-semibold text-slate-700
+               shadow-sm ring-1 ring-black/5 hover:bg-slate-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500
+               dark:bg-slate-800 dark:text-slate-100 dark:ring-white/10 dark:hover:bg-slate-700"
+      >
+        Đổi Giao Diện
+      </button>
+    </main>
+
+    <script>
+      const STORAGE_KEY = "unit7_bt8_theme";
+      const root = document.documentElement;
+
+      function applyTheme(theme) {
+        const isDark = theme === "dark";
+        root.classList.toggle("dark", isDark);
+      }
+
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved === "light" || saved === "dark") {
+        applyTheme(saved);
+      } else if (window.matchMedia?.("(prefers-color-scheme: dark)").matches) {
+        applyTheme("dark");
+      }
+
+      document.getElementById("toggleTheme")?.addEventListener("click", () => {
+        const next = root.classList.contains("dark") ? "light" : "dark";
+        localStorage.setItem(STORAGE_KEY, next);
+        applyTheme(next);
+      });
+    </script>
+  </body>
+</html>
+

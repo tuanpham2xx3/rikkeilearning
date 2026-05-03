@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./main.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Bỏ qua điều hướng</a>
+
+    <header class="site-header">
+      <nav class="navbar container" aria-label="Điều hướng chính">
+        <a class="brand" href="#">
+          <span class="brand__name">Rikkei BookStore</span>
+        </a>
+
+        <input class="nav-toggle__checkbox" type="checkbox" id="nav-toggle" />
+        <label
+          class="nav-toggle"
+          for="nav-toggle"
+          aria-label="Mở menu"
+          aria-controls="primary-nav"
+        >
+          <span class="nav-toggle__icon" aria-hidden="true"></span>
+        </label>
+
+        <div class="nav" id="primary-nav" data-nav>
+          <a class="nav__link is-active" href="#">Trang chủ</a>
+          <a class="nav__link" href="#new">Sách mới</a>
+          <a class="nav__link" href="#sale">Khuyến mãi</a>
+        </div>
+      </nav>
+    </header>
+
+    <main id="main" class="container">
+      <section class="hero">
+        <h1 class="hero__title">Sách Nổi Bật</h1>
+        <p class="hero__subtitle">
+          Khám phá tuyển tập sách được yêu thích nhất tuần này.
+        </p>
+      </section>
+
+      <section class="grid" aria-label="Danh sách sách">
+        <article class="card">
+          <div class="card__media">
+            <img
+              class="card__img"
+              src="../image.png"
+              alt="Bìa sách Hành Trình Về Phương Đông"
+              loading="lazy"
+            />
+          </div>
+          <div class="card__body">
+            <h2 class="card__title">Hành Trình Về Phương Đông</h2>
+            <p class="card__desc">
+              Một tác phẩm kinh điển khám phá những giá trị tâm linh và triết lý
+              phương Đông.
+            </p>
+            <div class="card__footer">
+              <a
+                class="btn btn--primary"
+                href="#cart-modal"
+                data-add-to-cart
+                data-product-name="Hành Trình Về Phương Đông"
+              >
+                Mua ngay
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card__media">
+            <img
+              class="card__img"
+              src="../image.png"
+              alt="Bìa sách Đắc Nhân Tâm"
+              loading="lazy"
+            />
+          </div>
+          <div class="card__body">
+            <h2 class="card__title">Đắc Nhân Tâm</h2>
+            <p class="card__desc">
+              Cuốn sách kinh điển về nghệ thuật giao tiếp và xây dựng mối quan
+              hệ.
+            </p>
+            <div class="card__footer">
+              <a
+                class="btn btn--primary"
+                href="#cart-modal"
+                data-add-to-cart
+                data-product-name="Đắc Nhân Tâm"
+              >
+                Mua ngay
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card__media">
+            <img
+              class="card__img"
+              src="../image.png"
+              alt="Bìa sách Tư duy nhanh và chậm"
+              loading="lazy"
+            />
+          </div>
+          <div class="card__body">
+            <h2 class="card__title">Tư Duy Nhanh Và Chậm</h2>
+            <p class="card__desc">
+              Góc nhìn khoa học về cách chúng ta suy nghĩ, ra quyết định và đánh
+              giá.
+            </p>
+            <div class="card__footer">
+              <a
+                class="btn btn--primary"
+                href="#cart-modal"
+                data-add-to-cart
+                data-product-name="Tư Duy Nhanh Và Chậm"
+              >
+                Mua ngay
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card__media">
+            <img
+              class="card__img"
+              src="../image.png"
+              alt="Bìa sách Nhà giả kim"
+              loading="lazy"
+            />
+          </div>
+          <div class="card__body">
+            <h2 class="card__title">Nhà Giả Kim</h2>
+            <p class="card__desc">
+              Hành trình đi tìm “kho báu” và lắng nghe tiếng nói nội tâm của mỗi
+              người.
+            </p>
+            <div class="card__footer">
+              <a
+                class="btn btn--primary"
+                href="#cart-modal"
+                data-add-to-cart
+                data-product-name="Nhà Giả Kim"
+              >
+                Mua ngay
+              </a>
+            </div>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <section
+      class="modal-root"
+      id="cart-modal"
+      data-modal
+      aria-label="Hộp thoại xác nhận"
+    >
+      <a
+        class="modal-backdrop"
+        href="#main"
+        aria-label="Đóng hộp thoại"
+        data-modal-backdrop
+      ></a>
+      <div
+        class="modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-title"
+      >
+        <header class="modal__header">
+          <h2 class="modal__title" id="modal-title">Thành công</h2>
+          <a class="icon-btn" href="#main" aria-label="Đóng" data-modal-close
+            >×</a
+          >
+        </header>
+        <div class="modal__body">
+          <p class="modal__message">
+            Đã thêm <strong data-modal-product>sản phẩm</strong> vào giỏ hàng
+            thành công!
+          </p>
+        </div>
+        <footer class="modal__footer">
+          <a class="btn" href="#main" data-modal-close>Tiếp tục mua sắm</a>
+          <a class="btn btn--success" href="#main" data-modal-close
+            >Đến giỏ hàng</a
+          >
+        </footer>
+      </div>
+    </section>
+  </body>
+</html>

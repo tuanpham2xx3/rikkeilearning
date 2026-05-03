@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Unit 7 - BT10 | Admin Dashboard Layout</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: { sans: ["Inter", "ui-sans-serif", "system-ui"] },
+          },
+        },
+      };
+    </script>
+  </head>
+
+  <body class="bg-slate-50 text-slate-900 font-sans">
+    <div class="min-h-screen flex">
+      <aside class="hidden md:flex md:w-64 md:flex-col bg-slate-900 text-slate-100">
+        <div class="px-6 py-6">
+          <div class="text-sm font-semibold tracking-wide uppercase text-slate-200">TechGadget Admin</div>
+        </div>
+
+        <nav class="px-3 pb-6">
+          <a
+            href="#"
+            class="flex items-center rounded-xl px-3 py-2 text-sm font-semibold bg-blue-600 text-white shadow-sm"
+          >
+            Tổng quan
+          </a>
+          <a
+            href="#"
+            class="mt-1 flex items-center rounded-xl px-3 py-2 text-sm font-semibold text-slate-200 hover:bg-white/10"
+          >
+            Đơn hàng
+          </a>
+          <a
+            href="#"
+            class="mt-1 flex items-center rounded-xl px-3 py-2 text-sm font-semibold text-slate-200 hover:bg-white/10"
+          >
+            Sản phẩm
+          </a>
+          <a
+            href="#"
+            class="mt-1 flex items-center rounded-xl px-3 py-2 text-sm font-semibold text-slate-200 hover:bg-white/10"
+          >
+            Khách hàng
+          </a>
+        </nav>
+
+        <div class="mt-auto px-6 py-6 text-xs text-slate-300">
+          © <span id="year"></span> TechGadget
+        </div>
+      </aside>
+
+      <main class="flex-1">
+        <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+          <header class="flex items-center gap-3">
+            <div class="relative w-full max-w-xl">
+              <input
+                type="search"
+                placeholder="Tìm kiếm mã đơn hàng, sản phẩm..."
+                class="w-full rounded-xl bg-white px-4 py-3 text-sm shadow-sm ring-1 ring-black/5 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+          </header>
+
+          <section class="mt-6 sm:mt-8">
+            <h1 class="text-lg sm:text-xl font-bold tracking-tight">Tổng quan hệ thống</h1>
+
+            <div class="mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+              <article class="rounded-2xl bg-white p-5 shadow-sm ring-1 ring-black/5">
+                <p class="text-xs font-semibold text-slate-500">Tổng doanh thu</p>
+                <p class="mt-2 text-2xl font-bold tracking-tight">125.000.000 đ</p>
+              </article>
+
+              <article class="rounded-2xl bg-white p-5 shadow-sm ring-1 ring-black/5">
+                <p class="text-xs font-semibold text-slate-500">Đơn hàng mới</p>
+                <p class="mt-2 text-2xl font-bold tracking-tight">342</p>
+              </article>
+
+              <article class="rounded-2xl bg-white p-5 shadow-sm ring-1 ring-black/5">
+                <p class="text-xs font-semibold text-slate-500">Khách hàng truy cập</p>
+                <p class="mt-2 text-2xl font-bold tracking-tight">1,204</p>
+              </article>
+
+              <article class="rounded-2xl bg-white p-5 shadow-sm ring-1 ring-black/5">
+                <p class="text-xs font-semibold text-slate-500">Tỉ lệ chuyển đổi</p>
+                <p class="mt-2 text-2xl font-bold tracking-tight">4.5%</p>
+              </article>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
+
