@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="vi" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FIT LIFE - Liên Hệ</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#D2FF03",
+              dark: "#070801",
+              white: "#FFFFFF",
+            },
+            fontFamily: {
+              sans: ["Inter", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+
+  <body class="font-sans antialiased bg-dark text-white">
+    <header
+      class="bg-dark/80 backdrop-blur-md sticky top-0 z-50 border-b border-primary/20 shadow-sm"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <input type="checkbox" id="nav-toggle-contact" class="peer hidden" />
+
+        <div class="flex justify-between items-center h-20">
+          <div
+            class="flex-shrink-0 flex items-center gap-3 cursor-pointer group"
+          >
+            <div
+              class="w-10 h-10 bg-primary rounded-xl flex items-center justify-center text-dark font-bold text-xl shadow-lg shadow-primary/30 transition-transform group-hover:scale-105"
+            >
+              <i class="fa-solid fa-dumbbell"></i>
+            </div>
+            <span
+              class="font-bold text-2xl tracking-tight text-white group-hover:scale-105"
+              >FIT <span class="text-primary">LIFE</span></span
+            >
+          </div>
+
+          <nav class="hidden md:flex space-x-10">
+            <a
+              href="index.html"
+              class="text-white/80 hover:text-primary font-medium transition-colors duration-200"
+              >Trang chủ</a
+            >
+            <a
+              href="index.html#features"
+              class="text-white/80 hover:text-primary font-medium transition-colors duration-200"
+              >Dịch vụ</a
+            >
+            <a
+              href="class.html"
+              class="text-white/80 hover:text-primary font-medium transition-colors duration-200"
+              >Lớp học</a
+            >
+            <a
+              href="contact.html"
+              class="text-primary font-semibold relative after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:w-full after:bg-primary transition-colors duration-200"
+              >Liên hệ</a
+            >
+          </nav>
+
+          <div class="hidden md:flex items-center space-x-5">
+            <a
+              href="#"
+              class="bg-primary hover:bg-white text-dark px-6 py-2.5 rounded-full font-bold transition-all duration-200 shadow-lg shadow-primary/20 transform hover:-translate-y-0.5"
+            >
+              Tham gia ngay
+            </a>
+          </div>
+
+          <label
+            for="nav-toggle-contact"
+            class="md:hidden cursor-pointer p-2 text-white hover:text-primary transition-colors"
+          >
+            <span class="sr-only">Mở hoặc đóng menu điều hướng</span>
+            <svg
+              class="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+          </label>
+        </div>
+
+        <nav
+          class="absolute left-0 right-0 top-full z-40 hidden w-full flex-col border-t border-primary/20 bg-dark/95 px-4 py-4 backdrop-blur-md peer-checked:flex md:hidden"
+          aria-label="Menu điều hướng (mobile)"
+        >
+          <a
+            href="index.html"
+            class="border-b border-primary/10 py-3 text-white/80 hover:text-primary"
+            >Trang chủ</a
+          >
+          <a
+            href="index.html#features"
+            class="border-b border-primary/10 py-3 text-white/80 hover:text-primary"
+            >Dịch vụ</a
+          >
+          <a
+            href="class.html"
+            class="border-b border-primary/10 py-3 text-white/80 hover:text-primary"
+            >Lớp học</a
+          >
+          <a
+            href="contact.html"
+            class="border-b border-primary/10 py-3 text-primary font-semibold"
+            >Liên hệ</a
+          >
+          <a
+            href="#"
+            class="mt-2 inline-flex w-full items-center justify-center rounded-full bg-primary px-6 py-3 font-bold text-dark shadow-lg shadow-primary/20 hover:bg-white"
+            >Tham gia ngay</a
+          >
+        </nav>
+      </div>
+    </header>
+
+    <main
+      class="min-h-[calc(100vh-80px)] flex items-center py-16 relative overflow-hidden"
+    >
+      <div
+        class="absolute top-1/2 right-0 -translate-y-1/2 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] pointer-events-none"
+      ></div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div class="max-w-lg">
+            <h1
+              class="text-4xl md:text-5xl font-black text-white mb-6 tracking-tight"
+            >
+              Sẵn sàng thay đổi?
+            </h1>
+            <p class="text-white/60 text-lg leading-relaxed mb-10">
+              Đăng ký thành viên ngay hôm nay để nhận ưu đãi giảm giá lên tới
+              <span class="text-primary font-bold">30%</span> cho tháng đầu
+              tiên. Điền thông tin vào form bên cạnh để chuyên viên của chúng
+              tôi liên hệ với bạn.
+            </p>
+
+            <ul class="space-y-6">
+              <li class="flex items-start gap-4 group">
+                <div
+                  class="w-10 h-10 rounded-full bg-white/5 border border-primary/20 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/10 transition-colors"
+                >
+                  <i class="fa-solid fa-location-dot text-primary text-lg"></i>
+                </div>
+                <div>
+                  <p class="text-white font-medium mt-2">
+                    Số 123, Đường ABC, Quận XYZ, Hà Nội
+                  </p>
+                </div>
+              </li>
+              <li class="flex items-start gap-4 group">
+                <div
+                  class="w-10 h-10 rounded-full bg-white/5 border border-primary/20 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/10 transition-colors"
+                >
+                  <i class="fa-solid fa-phone text-primary text-lg"></i>
+                </div>
+                <div>
+                  <p class="text-white font-medium mt-2">0123.456.789</p>
+                </div>
+              </li>
+              <li class="flex items-start gap-4 group">
+                <div
+                  class="w-10 h-10 rounded-full bg-white/5 border border-primary/20 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/10 transition-colors"
+                >
+                  <i class="fa-solid fa-envelope text-primary text-lg"></i>
+                </div>
+                <div>
+                  <p class="text-white font-medium mt-2">lienhe@fitlife.vn</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <div
+              class="bg-white/5 border border-primary/20 rounded-2xl p-8 md:p-10 shadow-2xl shadow-primary/5"
+            >
+              <h2
+                class="text-2xl font-bold text-white mb-8 border-b border-primary/20 pb-4 inline-block"
+              >
+                Form Đăng Ký Tư Vấn
+              </h2>
+
+              <form action="#" method="POST" class="space-y-6">
+                <div>
+                  <label
+                    for="fullname"
+                    class="block text-white/80 text-sm font-medium mb-2"
+                    >Họ và tên <span class="text-primary">*</span></label
+                  >
+                  <input
+                    type="text"
+                    id="fullname"
+                    placeholder="Nhập họ tên của bạn"
+                    class="w-full bg-dark border border-primary/20 rounded-lg px-4 py-3.5 text-white placeholder-white/30 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
+                  />
+                </div>
+
+                <div>
+                  <label
+                    for="phone"
+                    class="block text-white/80 text-sm font-medium mb-2"
+                    >Số điện thoại <span class="text-primary">*</span></label
+                  >
+                  <input
+                    type="tel"
+                    id="phone"
+                    placeholder="Ví dụ: 0987654321"
+                    class="w-full bg-dark border border-primary/20 rounded-lg px-4 py-3.5 text-white placeholder-white/30 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
+                  />
+                </div>
+
+                <div>
+                  <label
+                    for="goal"
+                    class="block text-white/80 text-sm font-medium mb-2"
+                    >Mục tiêu tập luyện</label
+                  >
+                  <div class="relative">
+                    <select
+                      id="goal"
+                      class="w-full bg-dark border border-primary/20 rounded-lg px-4 py-3.5 text-white appearance-none focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
+                    >
+                      <option value="lose_weight">Giảm cân / Đốt mỡ</option>
+                      <option value="gain_muscle">Tăng cơ / Thể hình</option>
+                      <option value="yoga">Yoga / Thư giãn</option>
+                      <option value="other">Khác</option>
+                    </select>
+                    <div
+                      class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-white/60"
+                    >
+                      <i class="fa-solid fa-chevron-down text-sm"></i>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-3 mt-4">
+                  <div class="flex items-center h-5 mt-1">
+                    <input
+                      id="terms"
+                      type="checkbox"
+                      class="w-4 h-4 rounded border-primary/20 bg-dark text-primary focus:ring-primary focus:ring-offset-dark"
+                    />
+                  </div>
+                  <label
+                    for="terms"
+                    class="text-white/60 text-sm leading-relaxed cursor-pointer"
+                  >
+                    Tôi đồng ý nhận thông tin tư vấn qua điện thoại và email quy
+                    định.
+                  </label>
+                </div>
+
+                <button
+                  type="submit"
+                  class="w-full bg-primary hover:bg-white text-dark font-bold text-lg py-4 rounded-lg transition-all duration-300 transform hover:-translate-y-1 shadow-lg shadow-primary/20 mt-4"
+                >
+                  Gửi Đăng Ký
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

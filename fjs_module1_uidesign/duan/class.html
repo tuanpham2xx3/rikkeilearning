@@ -1,0 +1,408 @@
+<!doctype html>
+<html lang="vi" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FIT LIFE - Lớp Học</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#D2FF03",
+              dark: "#070801",
+              white: "#FFFFFF",
+            },
+            fontFamily: {
+              sans: ["Inter", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+
+  <body class="font-sans antialiased bg-dark text-white">
+    <header
+      class="bg-dark/80 backdrop-blur-md sticky top-0 z-50 border-b border-primary/20 shadow-sm"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <input type="checkbox" id="nav-toggle-class" class="peer hidden" />
+
+        <div class="flex justify-between items-center h-20">
+          <div
+            class="flex-shrink-0 flex items-center gap-3 cursor-pointer group"
+          >
+            <div
+              class="w-10 h-10 bg-primary rounded-xl flex items-center justify-center text-dark font-bold text-xl shadow-lg shadow-primary/30 transition-transform group-hover:scale-105"
+            >
+              <i class="fa-solid fa-dumbbell"></i>
+            </div>
+            <span
+              class="font-bold text-2xl tracking-tight text-white group-hover:scale-105"
+              >FIT <span class="text-primary">LIFE</span></span
+            >
+          </div>
+
+          <nav class="hidden md:flex space-x-10">
+            <a
+              href="index.html"
+              class="text-white/80 hover:text-primary font-medium transition-colors duration-200"
+              >Trang chủ</a
+            >
+            <a
+              href="index.html#features"
+              class="text-white/80 hover:text-primary font-medium transition-colors duration-200"
+              >Dịch vụ</a
+            >
+            <a
+              href="class.html"
+              class="text-primary font-semibold relative after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:w-full after:bg-primary transition-colors duration-200"
+              >Lớp học</a
+            >
+            <a
+              href="contact.html"
+              class="text-white/80 hover:text-primary font-medium transition-colors duration-200"
+              >Liên hệ</a
+            >
+          </nav>
+
+          <div class="hidden md:flex items-center space-x-5">
+            <a
+              href="#"
+              class="bg-primary hover:bg-white text-dark px-6 py-2.5 rounded-full font-bold transition-all duration-200 shadow-lg shadow-primary/20 transform hover:-translate-y-0.5"
+            >
+              Tham gia ngay
+            </a>
+          </div>
+
+          <label
+            for="nav-toggle-class"
+            class="md:hidden cursor-pointer p-2 text-white hover:text-primary transition-colors"
+          >
+            <span class="sr-only">Mở hoặc đóng menu điều hướng</span>
+            <svg
+              class="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+          </label>
+        </div>
+
+        <nav
+          class="absolute left-0 right-0 top-full z-40 hidden w-full flex-col border-t border-primary/20 bg-dark/95 px-4 py-4 backdrop-blur-md peer-checked:flex md:hidden"
+          aria-label="Menu điều hướng (mobile)"
+        >
+          <a
+            href="index.html"
+            class="border-b border-primary/10 py-3 text-white/80 hover:text-primary"
+            >Trang chủ</a
+          >
+          <a
+            href="index.html#features"
+            class="border-b border-primary/10 py-3 text-white/80 hover:text-primary"
+            >Dịch vụ</a
+          >
+          <a
+            href="class.html"
+            class="border-b border-primary/10 py-3 text-primary font-semibold"
+            >Lớp học</a
+          >
+          <a
+            href="contact.html"
+            class="border-b border-primary/10 py-3 text-white/80 hover:text-primary"
+            >Liên hệ</a
+          >
+          <a
+            href="#"
+            class="mt-2 inline-flex w-full items-center justify-center rounded-full bg-primary px-6 py-3 font-bold text-dark shadow-lg shadow-primary/20 hover:bg-white"
+            >Tham gia ngay</a
+          >
+        </nav>
+      </div>
+    </header>
+
+    <div
+      class="bg-dark pt-32 pb-16 border-b border-primary/20 text-center relative overflow-hidden"
+    >
+      <div
+        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-primary/5 rounded-full blur-[100px] pointer-events-none"
+      ></div>
+      <h1
+        class="text-4xl md:text-5xl font-black text-white uppercase tracking-tight relative z-10"
+      >
+        Lịch Học & <span class="text-primary">Đăng Ký</span>
+      </h1>
+      <p class="mt-4 text-white/60 max-w-xl mx-auto relative z-10">
+        Khám phá các lớp học phù hợp với mục tiêu của bạn và đặt lịch tập ngay
+        hôm nay.
+      </p>
+    </div>
+
+    <section class="py-24 bg-dark">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2
+            class="text-2xl md:text-3xl font-bold text-white uppercase tracking-wider relative inline-block"
+          >
+            LỚP HỌC TIÊU BIỂU
+            <span
+              class="absolute -bottom-4 left-1/2 -translate-x-1/2 w-12 h-1 bg-primary rounded-full"
+            ></span>
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 xl:grid-cols-2 gap-8">
+          <div
+            class="bg-white/5 rounded-2xl overflow-hidden flex flex-col sm:flex-row border border-primary/20 hover:border-primary transition-all duration-300 group shadow-lg shadow-primary/5"
+          >
+            <div
+              class="w-full sm:w-5/12 h-64 sm:h-auto overflow-hidden bg-dark"
+            >
+              <img
+                src="images/course1.png"
+                alt="Thể Hình Sức Mạnh"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              />
+            </div>
+            <div class="w-full sm:w-7/12 p-8 flex flex-col justify-center">
+              <span
+                class="text-primary text-xs font-bold uppercase tracking-wider mb-2"
+                >Tăng cơ - Giảm mỡ</span
+              >
+              <h3
+                class="text-2xl font-bold text-white mb-4 group-hover:text-primary transition-colors"
+              >
+                Thể Hình Sức Mạnh
+              </h3>
+              <p class="text-white/60 text-sm leading-relaxed mb-8 flex-grow">
+                Cải thiện sức mạnh cơ bắp với tạ tự do và máy móc chuyên dụng.
+                Xây dựng nền tảng thể lực vững chắc.
+              </p>
+              <a
+                href="#"
+                class="text-white hover:text-primary font-bold text-sm flex items-center gap-2 transition-colors inline-flex w-fit group/link"
+              >
+                Xem chi tiết
+                <i
+                  class="fa-solid fa-arrow-right group-hover/link:translate-x-1 transition-transform"
+                ></i>
+              </a>
+            </div>
+          </div>
+
+          <div
+            class="bg-white/5 rounded-2xl overflow-hidden flex flex-col sm:flex-row border border-primary/20 hover:border-primary transition-all duration-300 group shadow-lg shadow-primary/5"
+          >
+            <div
+              class="w-full sm:w-5/12 h-64 sm:h-auto overflow-hidden bg-dark"
+            >
+              <img
+                src="images/course2.png"
+                alt="Yoga Thiền Định"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              />
+            </div>
+            <div class="w-full sm:w-7/12 p-8 flex flex-col justify-center">
+              <span
+                class="text-primary text-xs font-bold uppercase tracking-wider mb-2"
+                >Thư giãn - Dẻo dai</span
+              >
+              <h3
+                class="text-2xl font-bold text-white mb-4 group-hover:text-primary transition-colors"
+              >
+                Yoga Thiền Định
+              </h3>
+              <p class="text-white/60 text-sm leading-relaxed mb-8 flex-grow">
+                Cân bằng tâm trí, tăng cường sự dẻo dai với không gian yên tĩnh.
+                Giải tỏa căng thẳng hiệu quả.
+              </p>
+              <a
+                href="#"
+                class="text-white hover:text-primary font-bold text-sm flex items-center gap-2 transition-colors inline-flex w-fit group/link"
+              >
+                Xem chi tiết
+                <i
+                  class="fa-solid fa-arrow-right group-hover/link:translate-x-1 transition-transform"
+                ></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-24 bg-dark border-t border-primary/10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2
+            class="text-2xl md:text-3xl font-bold text-white uppercase tracking-wider relative inline-block"
+          >
+            LỊCH HỌC TUẦN NÀY
+            <span
+              class="absolute -bottom-4 left-1/2 -translate-x-1/2 w-12 h-1 bg-primary rounded-full"
+            ></span>
+          </h2>
+        </div>
+
+        <div
+          class="bg-white/5 border border-primary/20 rounded-2xl overflow-hidden shadow-lg shadow-primary/5"
+        >
+          <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse min-w-[800px]">
+              <thead>
+                <tr class="bg-dark/50 border-b border-primary/20">
+                  <th
+                    class="p-6 text-sm font-bold text-white uppercase tracking-wider whitespace-nowrap w-1/4"
+                  >
+                    Thời Gian
+                  </th>
+                  <th
+                    class="p-6 text-sm font-bold text-white uppercase tracking-wider whitespace-nowrap w-1/4"
+                  >
+                    Thứ Hai
+                  </th>
+                  <th
+                    class="p-6 text-sm font-bold text-white uppercase tracking-wider whitespace-nowrap w-1/4"
+                  >
+                    Thứ Tư
+                  </th>
+                  <th
+                    class="p-6 text-sm font-bold text-white uppercase tracking-wider whitespace-nowrap w-1/4"
+                  >
+                    Thứ Sáu
+                  </th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-primary/10">
+                <tr class="hover:bg-white/5 transition-colors group">
+                  <td
+                    class="p-6 whitespace-nowrap border-r border-primary/10 group-hover:bg-primary/5 transition-colors"
+                  >
+                    <span class="text-primary font-bold text-lg"
+                      >06:00 - 07:30</span
+                    >
+                  </td>
+                  <td
+                    class="p-6 cursor-pointer hover:bg-white/10 transition-colors"
+                  >
+                    <p class="text-white font-semibold mb-1">Yoga Thiền Định</p>
+                    <p class="text-white/40 text-xs uppercase tracking-wider">
+                      PT. Elena
+                    </p>
+                  </td>
+                  <td
+                    class="p-6 cursor-pointer hover:bg-white/10 transition-colors"
+                  >
+                    <p class="text-white font-semibold mb-1">Cardio Đốt Mỡ</p>
+                    <p class="text-white/40 text-xs uppercase tracking-wider">
+                      PT. David
+                    </p>
+                  </td>
+                  <td
+                    class="p-6 cursor-pointer hover:bg-white/10 transition-colors"
+                  >
+                    <p class="text-white font-semibold mb-1">
+                      Thể Hình Sức Mạnh
+                    </p>
+                    <p class="text-white/40 text-xs uppercase tracking-wider">
+                      PT. Marcus
+                    </p>
+                  </td>
+                </tr>
+                <tr class="hover:bg-white/5 transition-colors group">
+                  <td
+                    class="p-6 whitespace-nowrap border-r border-primary/10 group-hover:bg-primary/5 transition-colors"
+                  >
+                    <span class="text-primary font-bold text-lg"
+                      >17:00 - 18:30</span
+                    >
+                  </td>
+                  <td
+                    class="p-6 cursor-pointer hover:bg-white/10 transition-colors"
+                  >
+                    <p class="text-white font-semibold mb-1">
+                      Thể Hình Sức Mạnh
+                    </p>
+                    <p class="text-white/40 text-xs uppercase tracking-wider">
+                      PT. Marcus
+                    </p>
+                  </td>
+                  <td
+                    class="p-6 cursor-pointer hover:bg-white/10 transition-colors"
+                  >
+                    <p class="text-white font-semibold mb-1">Zumba Dance</p>
+                    <p class="text-white/40 text-xs uppercase tracking-wider">
+                      PT. Anna
+                    </p>
+                  </td>
+                  <td
+                    class="p-6 cursor-pointer hover:bg-white/10 transition-colors"
+                  >
+                    <p class="text-white font-semibold mb-1">Boxing Cơ Bản</p>
+                    <p class="text-white/40 text-xs uppercase tracking-wider">
+                      PT. John
+                    </p>
+                  </td>
+                </tr>
+                <tr class="hover:bg-white/5 transition-colors group">
+                  <td
+                    class="p-6 whitespace-nowrap border-r border-primary/10 group-hover:bg-primary/5 transition-colors"
+                  >
+                    <span class="text-primary font-bold text-lg"
+                      >19:00 - 20:30</span
+                    >
+                  </td>
+                  <td
+                    class="p-6 cursor-pointer hover:bg-white/10 transition-colors"
+                  >
+                    <p class="text-white font-semibold mb-1">CrossFit</p>
+                    <p class="text-white/40 text-xs uppercase tracking-wider">
+                      PT. Mike
+                    </p>
+                  </td>
+                  <td
+                    class="p-6 cursor-pointer hover:bg-white/10 transition-colors"
+                  >
+                    <p class="text-white font-semibold mb-1">Yoga Thư Giãn</p>
+                    <p class="text-white/40 text-xs uppercase tracking-wider">
+                      PT. Elena
+                    </p>
+                  </td>
+                  <td
+                    class="p-6 cursor-pointer hover:bg-white/10 transition-colors"
+                  >
+                    <p class="text-white font-semibold mb-1">Cardio Nâng Cao</p>
+                    <p class="text-white/40 text-xs uppercase tracking-wider">
+                      PT. David
+                    </p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="vi" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Giao diện Header Modern</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#D2FF03",
+              dark: "#070801",
+              white: "#FFFFFF",
+            },
+            fontFamily: {
+              sans: ["Inter", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+
+  <body class="font-sans antialiased bg-dark text-white">
+    <header
+      class="bg-dark/80 backdrop-blur-md sticky top-0 z-50 border-b border-primary/20 shadow-sm"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <input type="checkbox" id="nav-toggle-index" class="peer hidden" />
+
+        <div class="flex justify-between items-center h-20">
+          <div
+            class="flex-shrink-0 flex items-center gap-3 cursor-pointer group"
+          >
+            <div
+              class="w-10 h-10 bg-primary rounded-xl flex items-center justify-center text-dark font-bold text-xl shadow-lg shadow-primary/30 transition-transform group-hover:scale-105"
+            >
+              <i class="fa-solid fa-dumbbell"></i>
+            </div>
+            <span
+              class="font-bold text-2xl tracking-tight text-white group-hover:scale-105"
+              >FIT <span class="text-primary">LIFE</span></span
+            >
+          </div>
+
+          <nav class="hidden md:flex space-x-10">
+            <a
+              href="index.html"
+              class="text-primary font-semibold relative after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:w-full after:bg-primary transition-colors duration-200"
+              >Trang chủ</a
+            >
+            <a
+              href="index.html#features"
+              class="text-white/80 hover:text-primary font-medium transition-colors duration-200"
+              >Dịch vụ</a
+            >
+            <a
+              href="class.html"
+              class="text-white/80 hover:text-primary font-medium transition-colors duration-200"
+              >Lớp học</a
+            >
+            <a
+              href="contact.html"
+              class="text-white/80 hover:text-primary font-medium transition-colors duration-200"
+              >Liên hệ</a
+            >
+          </nav>
+
+          <div class="hidden md:flex items-center space-x-5">
+            <a
+              href="#"
+              class="bg-primary hover:bg-white text-dark px-6 py-2.5 rounded-full font-bold transition-all duration-200 shadow-lg shadow-primary/20 transform hover:-translate-y-0.5"
+            >
+              Tham gia ngay
+            </a>
+          </div>
+
+          <label
+            for="nav-toggle-index"
+            class="md:hidden cursor-pointer p-2 text-white hover:text-primary transition-colors"
+          >
+            <span class="sr-only">Mở hoặc đóng menu điều hướng</span>
+            <svg
+              class="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+          </label>
+        </div>
+
+        <nav
+          class="absolute left-0 right-0 top-full z-40 hidden w-full flex-col border-t border-primary/20 bg-dark/95 px-4 py-4 backdrop-blur-md peer-checked:flex md:hidden"
+          aria-label="Menu điều hướng (mobile)"
+        >
+          <a
+            href="index.html"
+            class="border-b border-primary/10 py-3 text-primary font-semibold"
+            >Trang chủ</a
+          >
+          <a
+            href="index.html#features"
+            class="border-b border-primary/10 py-3 text-white/80 hover:text-primary"
+            >Dịch vụ</a
+          >
+          <a
+            href="class.html"
+            class="border-b border-primary/10 py-3 text-white/80 hover:text-primary"
+            >Lớp học</a
+          >
+          <a
+            href="contact.html"
+            class="border-b border-primary/10 py-3 text-white/80 hover:text-primary"
+            >Liên hệ</a
+          >
+          <a
+            href="#"
+            class="mt-2 inline-flex w-full items-center justify-center rounded-full bg-primary px-6 py-3 font-bold text-dark shadow-lg shadow-primary/20 hover:bg-white"
+            >Tham gia ngay</a
+          >
+        </nav>
+      </div>
+    </header>
+
+    <main
+      id="home"
+      class="grid grid-cols-1 lg:grid-cols-2 min-h-[calc(100vh-80px)]"
+    >
+      <div
+        class="flex flex-col justify-center px-4 sm:px-8 lg:px-16 xl:px-24 py-16 lg:py-0 relative"
+      >
+        <div class="max-w-2xl">
+          <div
+            class="inline-block bg-dark/80 backdrop-blur-sm border border-primary/20 text-white/80 px-5 py-2.5 text-sm font-medium mb-8"
+          >
+            Join and Save 20%.
+          </div>
+
+          <h1
+            class="text-5xl sm:text-6xl lg:text-[5.5rem] font-black uppercase leading-[1.05] tracking-tight text-white mb-6"
+          >
+            LIVE YOUR <span class="text-primary">GOOD LIFE</span>
+          </h1>
+
+          <p
+            class="text-white/60 text-lg sm:text-xl leading-relaxed mb-12 max-w-xl"
+          >
+            Unlock your potential with personalized training programs designed
+            by experienced coaches. Achieve your fitness goals faster and more
+            effectively than ever before.
+          </p>
+
+          <div
+            class="relative flex w-full flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center sm:gap-5"
+          >
+            <a
+              href="#courses"
+              class="w-full text-center bg-primary hover:bg-white text-dark font-bold px-8 py-4 rounded-xl transition-all duration-300 transform hover:-translate-y-1 shadow-lg shadow-primary/20 sm:w-auto"
+            >
+              BECOME A MEMBER
+            </a>
+            <a
+              href="#features"
+              class="w-full text-center border border-primary hover:bg-primary text-primary hover:text-dark font-bold px-8 py-4 rounded-xl transition-all duration-300 sm:w-auto"
+            >
+              JOIN US
+            </a>
+
+            <div
+              class="hidden sm:flex absolute right-0 top-1/2 -translate-y-1/2 w-16 h-16 rounded-full border border-primary/20 bg-dark items-center justify-center shadow-lg shadow-primary/10"
+            >
+              <svg
+                class="w-8 h-8 text-primary animate-pulse"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path
+                  d="M12 2L14.4 9.6L22 12L14.4 14.4L12 22L9.6 14.4L2 12L9.6 9.6L12 2Z"
+                />
+              </svg>
+            </div>
+          </div>
+
+          <div class="mt-20 flex items-center gap-6">
+            <div class="flex -space-x-4">
+              <img
+                class="w-12 h-12 rounded-full border-2 border-dark object-cover"
+                src="https://i.pravatar.cc/150?img=68"
+                alt="Khách hàng 1"
+              />
+              <img
+                class="w-12 h-12 rounded-full border-2 border-dark object-cover"
+                src="https://i.pravatar.cc/150?img=33"
+                alt="Khách hàng 2"
+              />
+              <img
+                class="w-12 h-12 rounded-full border-2 border-dark object-cover"
+                src="https://i.pravatar.cc/150?img=47"
+                alt="Khách hàng 3"
+              />
+              <img
+                class="w-12 h-12 rounded-full border-2 border-dark object-cover"
+                src="https://i.pravatar.cc/150?img=12"
+                alt="Khách hàng 4"
+              />
+            </div>
+            <div>
+              <div class="flex gap-1 text-primary text-sm mb-1">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+              </div>
+              <p class="font-bold text-white">500+ Satisfied Customers</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="grid grid-cols-2 h-full border-l border-primary/20 border-t lg:border-t-0"
+      >
+        <div
+          class="relative w-full h-[60vh] lg:h-full border-r border-primary/20 group overflow-hidden bg-dark"
+        >
+          <img
+            src="images/hero1.png"
+            alt="Fitness Model 1"
+            class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+          />
+          <div
+            class="absolute inset-0 bg-gradient-to-t from-dark/80 via-transparent to-transparent"
+          ></div>
+        </div>
+        <div
+          class="relative w-full h-[60vh] lg:h-full group overflow-hidden bg-dark"
+        >
+          <img
+            src="images/hero2.png"
+            alt="Fitness Model 2"
+            class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+          />
+          <div
+            class="absolute inset-0 bg-gradient-to-t from-dark/80 via-transparent to-transparent"
+          ></div>
+        </div>
+      </div>
+    </main>
+
+    <section id="features" class="py-24 bg-dark border-t border-primary/20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2
+            class="text-2xl md:text-3xl font-bold text-white uppercase tracking-wider relative inline-block"
+          >
+            TẠI SAO CHỌN CHÚNG TÔI?
+            <span
+              class="absolute -bottom-4 left-1/2 -translate-x-1/2 w-12 h-1 bg-primary rounded-full"
+            ></span>
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div
+            class="bg-white/5 p-8 rounded-2xl flex flex-col items-center text-center gap-5 hover:-translate-y-2 transition-transform duration-300 border border-primary/20 hover:border-primary shadow-lg shadow-primary/5 group"
+          >
+            <div
+              class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300"
+            >
+              <i class="fa-solid fa-dumbbell text-3xl text-primary"></i>
+            </div>
+            <h3 class="text-xl font-bold text-white">Thiết bị hiện đại</h3>
+            <p class="text-white/60 text-sm leading-relaxed">
+              Trang bị 100% máy móc nhập khẩu mới nhất, đảm bảo hiệu quả tập
+              luyện tối đa cho mọi nhóm cơ.
+            </p>
+          </div>
+
+          <div
+            class="bg-white/5 p-8 rounded-2xl flex flex-col items-center text-center gap-5 hover:-translate-y-2 transition-transform duration-300 border border-primary/20 hover:border-primary shadow-lg shadow-primary/5 group"
+          >
+            <div
+              class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300"
+            >
+              <i class="fa-solid fa-user-tie text-3xl text-primary"></i>
+            </div>
+            <h3 class="text-xl font-bold text-white">PT Chuyên nghiệp</h3>
+            <p class="text-white/60 text-sm leading-relaxed">
+              Đội ngũ huấn luyện viên có chứng chỉ quốc tế, nhiệt tình và theo
+              sát tiến độ của từng học viên.
+            </p>
+          </div>
+
+          <div
+            class="bg-white/5 p-8 rounded-2xl flex flex-col items-center text-center gap-5 hover:-translate-y-2 transition-transform duration-300 border border-primary/20 hover:border-primary shadow-lg shadow-primary/5 group"
+          >
+            <div
+              class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300"
+            >
+              <i class="fa-regular fa-clock text-3xl text-primary"></i>
+            </div>
+            <h3 class="text-xl font-bold text-white">Mở cửa 24/7</h3>
+            <p class="text-white/60 text-sm leading-relaxed">
+              Không gò bó thời gian. Tập luyện bất cứ lúc nào phù hợp với lịch
+              trình bận rộn của riêng bạn.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="courses" class="py-24 bg-dark">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2
+            class="text-2xl md:text-3xl font-bold text-white uppercase tracking-wider relative inline-block"
+          >
+            KHÓA HỌC NỔI BẬT
+            <span
+              class="absolute -bottom-4 left-1/2 -translate-x-1/2 w-12 h-1 bg-primary rounded-full"
+            ></span>
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div
+            class="bg-white/5 rounded-2xl overflow-hidden border border-primary/20 hover:border-primary transition-all duration-300 group flex flex-col shadow-lg shadow-primary/5 cursor-pointer"
+          >
+            <div class="relative h-60 overflow-hidden">
+              <img
+                src="images/course1.png"
+                alt="Lột Xác 30 Ngày"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              />
+              <div
+                class="absolute top-4 right-4 bg-primary text-dark text-xs font-bold px-3 py-1.5 rounded-full shadow-lg"
+              >
+                -30% OFF
+              </div>
+            </div>
+            <div class="p-6 flex flex-col flex-grow">
+              <h3
+                class="text-xl font-bold text-white mb-3 group-hover:text-primary transition-colors"
+              >
+                Lột Xác 30 Ngày
+              </h3>
+              <p class="text-white/60 text-sm leading-relaxed mb-6 flex-grow">
+                Giáo án tập với HLV cá nhân ngắn hạn. Cam kết thay đổi rõ rệt.
+                Bao gồm tư vấn chế độ dinh dưỡng chuẩn y khoa.
+              </p>
+              <div
+                class="flex items-center justify-between mt-auto pt-4 border-t border-primary/20"
+              >
+                <span
+                  class="text-white/60 text-sm font-medium flex items-center gap-2"
+                >
+                  <i class="fa-regular fa-calendar-days text-primary/70"></i> 12
+                  Buổi/Tháng
+                </span>
+                <a
+                  href="#"
+                  class="text-primary hover:text-white font-bold text-sm flex items-center gap-1.5 transition-colors"
+                >
+                  Từ 500k/tháng <i class="fa-solid fa-arrow-right text-xs"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="bg-white/5 rounded-2xl overflow-hidden border border-primary/20 hover:border-primary transition-all duration-300 group flex flex-col shadow-lg shadow-primary/5 cursor-pointer"
+          >
+            <div class="relative h-60 overflow-hidden">
+              <img
+                src="images/course2.png"
+                alt="Yoga Trị Liệu & Thiền"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              />
+              <div
+                class="absolute top-4 right-4 bg-primary text-dark text-xs font-bold px-3 py-1.5 rounded-full shadow-lg"
+              >
+                HOT NHẤT
+              </div>
+            </div>
+            <div class="p-6 flex flex-col flex-grow">
+              <h3
+                class="text-xl font-bold text-white mb-3 group-hover:text-primary transition-colors"
+              >
+                Yoga Trị Liệu & Thiền
+              </h3>
+              <p class="text-white/60 text-sm leading-relaxed mb-6 flex-grow">
+                Tập trung cải thiện sức khỏe tinh thần. Trị liệu mỏi vai gáy, xả
+                stress mệt mỏi. Liều thuốc tĩnh tâm trong nhịp sống hiện đại.
+              </p>
+              <div
+                class="flex items-center justify-between mt-auto pt-4 border-t border-primary/20"
+              >
+                <span
+                  class="text-white/60 text-sm font-medium flex items-center gap-2"
+                >
+                  <i class="fa-regular fa-calendar-days text-primary/70"></i>
+                  Linh hoạt
+                </span>
+                <a
+                  href="#"
+                  class="text-primary hover:text-white font-bold text-sm flex items-center gap-1.5 transition-colors"
+                >
+                  Từ 300k/tháng <i class="fa-solid fa-arrow-right text-xs"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="bg-white/5 rounded-2xl overflow-hidden border border-primary/20 hover:border-primary transition-all duration-300 group flex flex-col shadow-lg shadow-primary/5 cursor-pointer"
+          >
+            <div class="relative h-60 overflow-hidden">
+              <img
+                src="images/course3.png"
+                alt="Tăng Cơ Thẩm Mỹ"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              />
+            </div>
+            <div class="p-6 flex flex-col flex-grow">
+              <h3
+                class="text-xl font-bold text-white mb-3 group-hover:text-primary transition-colors"
+              >
+                Tăng Cơ Thẩm Mỹ
+              </h3>
+              <p class="text-white/60 text-sm leading-relaxed mb-6 flex-grow">
+                Giáo án Hypertrophy bài bản nhất. Tập trung xây dựng khối lượng
+                cơ bắp cân đối, hướng tới vóc dáng thể hình ấn tượng.
+              </p>
+              <div
+                class="flex items-center justify-between mt-auto pt-4 border-t border-primary/20"
+              >
+                <span
+                  class="text-white/60 text-sm font-medium flex items-center gap-2"
+                >
+                  <i class="fa-regular fa-calendar-days text-primary/70"></i> 16
+                  Buổi/Tháng
+                </span>
+                <a
+                  href="#"
+                  class="text-primary hover:text-white font-bold text-sm flex items-center gap-1.5 transition-colors"
+                >
+                  Từ 700k/tháng <i class="fa-solid fa-arrow-right text-xs"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
