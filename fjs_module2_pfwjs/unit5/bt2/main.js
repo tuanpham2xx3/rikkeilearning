@@ -1,8 +1,5 @@
-const inputEl = document.getElementById("user-input");
-const output = document.getElementById("output");
+var colors = ["Red", "Green", "Blue"];
 
-inputEl.addEventListener("keydown", (e) => {
-  const p = document.createElement("p");
-  p.textContent = e.key;
-  output.appendChild(p);
-});
+colors.splice(1, 1, "Yellow", "Pink");
+
+console.log(colors);

@@ -1,5 +1,11 @@
-const prices = [100, 200, 300, 400];
+const parent = document.getElementById("parent");
+const child = document.getElementById("child");
 
-const totalPrices = prices.reduce((acc, num) => (acc += num), 0);
+parent.addEventListener("click", () => {
+  console.log("Parent clicked");
+});
 
-console.log(totalPrices);
+child.addEventListener("click", (e) => {
+  e.stopPropagation();
+  console.log("Child clicked");
+});

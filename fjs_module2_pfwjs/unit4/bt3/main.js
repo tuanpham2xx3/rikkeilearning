@@ -1,9 +1,14 @@
-const scores = [1, 2, 3, 4, 5];
+const registerForm = document.getElementById("register-form");
+const usernameInput = document.getElementById("username");
+const emailInput = document.getElementById("email");
 
-scores.forEach((e) => {
-  e *= e;
-  console.log(e);
+registerForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const formData = {
+    username: usernameInput.value,
+    email: emailInput.value,
+  };
+
+  console.log(formData);
 });
-
-const doubledScores = scores.map((num) => num * 2);
-console.log(doubledScores);

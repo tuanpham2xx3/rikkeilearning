@@ -1,5 +1,17 @@
-var colors = ["Red", "Green", "Blue"];
+const itemList = document.getElementById("item-list");
+const addItemButton = document.getElementById("add-item");
+const removeLastButton = document.getElementById("remove-last");
 
-colors.splice(1, 1, "Yellow", "Pink");
+addItemButton.addEventListener("click", () => {
+  const item = document.createElement("li");
+  item.textContent = "New Item";
+  itemList.appendChild(item);
+});
 
-console.log(colors);
+removeLastButton.addEventListener("click", () => {
+  const lastItem = itemList.lastElementChild;
+
+  if (lastItem) {
+    lastItem.remove();
+  }
+});

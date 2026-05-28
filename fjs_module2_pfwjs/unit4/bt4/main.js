@@ -1,5 +1,9 @@
-const prices = [100, 200, 300, 400];
+const deleteButtons = document.querySelectorAll(".delete-button");
 
-const totalPrice = prices.reduce((acc, num) => ((acc += num), 0));
+deleteButtons.forEach((button) => {
+  button.addEventListener("click", (e) => {
+    const listItem = e.target.parentElement;
 
-console.log(totalPrice);
+    listItem.remove();
+  });
+});
