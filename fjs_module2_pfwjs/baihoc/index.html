@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quan ly sinh vien</title>
+  </head>
+  <body>
+    <h1>Quan ly sinh vien</h1>
+
+    <form onsubmit="submitHandle(event)">
+      <input name="id" type="number" placeholder="Nhap id" />
+      <br />
+      <input name="name" type="text" placeholder="Nhap ten" />
+      <br />
+      <input name="age" type="number" placeholder="Nhap tuoi" />
+      <br />
+      <select name="gender">
+        <option value="">Chon gioi tinh</option>
+        <option value="male">Nam</option>
+        <option value="female">Nu</option>
+      </select>
+      <br />
+      <button type="button" onclick="logStudentList()">Log danh sach</button>
+      <button type="submit">Them moi</button>
+      <button type="button" onclick="deleteStudent()">Xoa</button>
+      <button type="button" onclick="updateStudent()">Sua</button>
+    </form>
+
+    <script src="./lib.js"></script>
+    <script src="./main.js"></script>
+  </body>
+</html>
