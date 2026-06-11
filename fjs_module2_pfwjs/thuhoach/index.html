@@ -1,0 +1,652 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quản lý chi tiêu</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-zinc-100 text-zinc-950">
+    <main class="mx-auto min-h-screen w-full max-w-6xl px-3 py-3 sm:px-6 sm:py-5 lg:px-8">
+      <header class="flex flex-col gap-4 border-b border-zinc-200 pb-4 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <h1 class="text-2xl font-semibold tracking-normal sm:text-3xl">
+            Quản lý chi tiêu
+          </h1>
+          <p class="mt-1 max-w-md text-sm leading-5 text-zinc-600">
+            Theo dõi thu nhập, chi tiêu và hạn mức theo tháng.
+          </p>
+        </div>
+
+        <form id="month-form" class="grid grid-cols-2 gap-2 sm:grid-cols-[120px_140px_auto]">
+          <label class="sr-only" for="selected-month">Tháng</label>
+          <input
+            id="selected-month"
+            class="h-11 min-w-0 rounded-lg border border-zinc-300 bg-white px-3 text-base outline-none focus:border-emerald-600 sm:text-sm"
+            max="12"
+            min="0"
+            name="month"
+            placeholder="Tất cả"
+            type="number"
+          />
+          <label class="sr-only" for="selected-year">Năm</label>
+          <input
+            id="selected-year"
+            class="h-11 min-w-0 rounded-lg border border-zinc-300 bg-white px-3 text-base outline-none focus:border-emerald-600 sm:text-sm"
+            min="2000"
+            name="year"
+            type="number"
+          />
+          <button
+            class="col-span-2 h-11 rounded-lg bg-zinc-950 px-4 text-sm font-medium text-white hover:bg-zinc-800 sm:col-span-1"
+            type="submit"
+          >
+            Lọc
+          </button>
+        </form>
+      </header>
+
+      <section id="dashboard" class="grid grid-cols-1 gap-3 py-4 sm:grid-cols-3"></section>
+
+      <section class="grid grid-cols-1 gap-4 lg:grid-cols-[360px_1fr]">
+        <div class="space-y-4">
+          <section class="rounded-lg border border-zinc-200 bg-white p-3 sm:p-4">
+            <h2 class="text-base font-semibold">Danh mục</h2>
+            <form id="category-form" class="mt-4 space-y-3">
+              <div>
+                <label class="text-sm font-medium text-zinc-700" for="category-name">
+                  Tên danh mục
+                </label>
+                <input
+                  id="category-name"
+                  class="mt-1 h-11 w-full rounded-lg border border-zinc-300 px-3 text-base outline-none focus:border-emerald-600 sm:text-sm"
+                  name="name"
+                  placeholder="Ăn uống"
+                  type="text"
+                />
+              </div>
+              <div>
+                <label class="text-sm font-medium text-zinc-700" for="category-limit">
+                  Hạn mức
+                </label>
+                <input
+                  id="category-limit"
+                  class="mt-1 h-11 w-full rounded-lg border border-zinc-300 px-3 text-base outline-none focus:border-emerald-600 sm:text-sm"
+                  min="0"
+                  name="limit"
+                  placeholder="2000000"
+                  type="number"
+                />
+              </div>
+              <button
+                class="h-11 w-full rounded-lg bg-emerald-700 text-sm font-medium text-white hover:bg-emerald-800"
+                type="submit"
+              >
+                Thêm danh mục
+              </button>
+            </form>
+            <ul id="categories" class="mt-4 space-y-2"></ul>
+          </section>
+
+          <section class="rounded-lg border border-zinc-200 bg-white p-3 sm:p-4">
+            <h2 class="text-base font-semibold">Cảnh báo hạn mức</h2>
+            <ul id="alerts" class="mt-4 space-y-2"></ul>
+          </section>
+        </div>
+
+        <div class="space-y-4">
+          <section class="rounded-lg border border-zinc-200 bg-white p-3 sm:p-4">
+            <h2 class="text-base font-semibold">Thêm giao dịch</h2>
+            <form id="transaction-form" class="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
+              <div>
+                <label class="text-sm font-medium text-zinc-700" for="transaction-type">
+                  Loại
+                </label>
+                <select
+                  id="transaction-type"
+                  class="mt-1 h-11 w-full rounded-lg border border-zinc-300 bg-white px-3 text-base outline-none focus:border-emerald-600 sm:text-sm"
+                  name="type"
+                >
+                  <option value="expense">Chi tiêu</option>
+                  <option value="income">Thu nhập</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="text-sm font-medium text-zinc-700" for="transaction-category">
+                  Danh mục
+                </label>
+                <select
+                  id="transaction-category"
+                  class="mt-1 h-11 w-full rounded-lg border border-zinc-300 bg-white px-3 text-base outline-none focus:border-emerald-600 sm:text-sm"
+                  name="categoryId"
+                ></select>
+              </div>
+
+              <div>
+                <label class="text-sm font-medium text-zinc-700" for="transaction-amount">
+                  Số tiền
+                </label>
+                <input
+                  id="transaction-amount"
+                  class="mt-1 h-11 w-full rounded-lg border border-zinc-300 px-3 text-base outline-none focus:border-emerald-600 sm:text-sm"
+                  min="1"
+                  name="amount"
+                  placeholder="50000"
+                  type="number"
+                />
+              </div>
+
+              <div>
+                <label class="text-sm font-medium text-zinc-700" for="transaction-date">
+                  Ngày
+                </label>
+                <input
+                  id="transaction-date"
+                  class="mt-1 h-11 w-full rounded-lg border border-zinc-300 px-3 text-base outline-none focus:border-emerald-600 sm:text-sm"
+                  name="date"
+                  type="date"
+                />
+              </div>
+
+              <div class="sm:col-span-2">
+                <label class="text-sm font-medium text-zinc-700" for="transaction-note">
+                  Ghi chú
+                </label>
+                <input
+                  id="transaction-note"
+                  class="mt-1 h-11 w-full rounded-lg border border-zinc-300 px-3 text-base outline-none focus:border-emerald-600 sm:text-sm"
+                  name="note"
+                  placeholder="Ăn sáng"
+                  type="text"
+                />
+              </div>
+
+              <button
+                class="h-11 rounded-lg bg-zinc-950 text-sm font-medium text-white hover:bg-zinc-800 sm:col-span-2"
+                type="submit"
+              >
+                Thêm giao dịch
+              </button>
+            </form>
+            <div id="form-errors" class="mt-3 text-sm text-rose-700"></div>
+          </section>
+
+          <section class="rounded-lg border border-zinc-200 bg-white p-3 sm:p-4">
+            <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+              <h2 class="text-base font-semibold">Lịch sử giao dịch</h2>
+              <div class="grid grid-cols-1 gap-2 sm:flex sm:items-center">
+                <label class="sr-only" for="transaction-sort">Sắp xếp</label>
+                <select
+                  id="transaction-sort"
+                  class="h-11 rounded-lg border border-zinc-300 bg-white px-3 text-base outline-none focus:border-emerald-600 sm:h-9 sm:text-sm"
+                >
+                  <option value="desc">Mới nhất</option>
+                  <option value="asc">Cũ nhất</option>
+                </select>
+                <button
+                  id="clear-data"
+                  class="h-11 rounded-lg border border-zinc-300 px-3 text-sm font-medium text-zinc-700 hover:bg-zinc-100 sm:h-9"
+                  type="button"
+                >
+                  Xóa dữ liệu
+                </button>
+              </div>
+            </div>
+            <ul id="transactions" class="mt-4 space-y-3"></ul>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const STORAGE_KEY = "expense_app_state";
+
+      const today = new Date();
+      let state = loadState();
+
+      const elements = {
+        dashboard: document.querySelector("#dashboard"),
+        categories: document.querySelector("#categories"),
+        categoryForm: document.querySelector("#category-form"),
+        transactionForm: document.querySelector("#transaction-form"),
+        transactions: document.querySelector("#transactions"),
+        alerts: document.querySelector("#alerts"),
+        errors: document.querySelector("#form-errors"),
+        categorySelect: document.querySelector("#transaction-category"),
+        transactionDate: document.querySelector("#transaction-date"),
+        monthForm: document.querySelector("#month-form"),
+        selectedMonth: document.querySelector("#selected-month"),
+        selectedYear: document.querySelector("#selected-year"),
+        transactionSort: document.querySelector("#transaction-sort"),
+        clearData: document.querySelector("#clear-data"),
+      };
+
+      function createInitialState() {
+        return {
+          categories: [],
+          transactions: [],
+          selectedMonth: 0,
+          selectedYear: today.getFullYear(),
+          selectedSort: "desc",
+        };
+      }
+
+      function loadState() {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        return {
+          ...createInitialState(),
+          ...(raw === null ? {} : JSON.parse(raw)),
+        };
+      }
+
+      function saveState() {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      }
+
+      function formatCurrency(amount) {
+        return amount.toLocaleString("vi-VN") + "đ";
+      }
+
+      function getTodayValue() {
+        const now = new Date();
+        const timezoneOffset = now.getTimezoneOffset() * 60 * 1000;
+        return new Date(now.getTime() - timezoneOffset).toISOString().slice(0, 10);
+      }
+
+      function createId(prefix) {
+        const random = Math.random().toString(36).slice(2, 8);
+        return `${prefix}_${Date.now()}_${random}`;
+      }
+
+      function getTransactionDateParts(transaction) {
+        const date = new Date(transaction.date);
+        return {
+          month: date.getMonth() + 1,
+          year: date.getFullYear(),
+        };
+      }
+
+      function getTransactionSortTime(transaction) {
+        const dateTime = new Date(transaction.date).getTime();
+        const idTime = Number(String(transaction.id).split("_")[1] || 0);
+
+        return dateTime + idTime / 10000000000000;
+      }
+
+      function calculateDashboard(transactions) {
+        const totalIncome = transactions
+          .filter((tran) => tran.type === "income")
+          .reduce((acc, tran) => acc + tran.amount, 0);
+        const totalExpense = transactions
+          .filter((tran) => tran.type === "expense")
+          .reduce((acc, tran) => acc + tran.amount, 0);
+
+        return {
+          totalIncome,
+          totalExpense,
+          balance: totalIncome - totalExpense,
+        };
+      }
+
+      function getCurrentMonthTransactions() {
+        if (state.selectedMonth === 0) {
+          return state.transactions;
+        }
+
+        return state.transactions.filter((tran) => {
+          const date = getTransactionDateParts(tran);
+          return (
+            date.month === state.selectedMonth &&
+            date.year === state.selectedYear
+          );
+        });
+      }
+
+      function validateTransactionInput(data) {
+        const errors = [];
+
+        if (data.amount <= 0) {
+          errors.push("Số tiền phải lớn hơn 0");
+        }
+
+        if (data.type === "expense" && data.categoryId.trim() === "") {
+          errors.push("Vui lòng chọn danh mục");
+        }
+
+        if (data.date.trim() === "") {
+          errors.push("Vui lòng chọn ngày giao dịch");
+        }
+
+        if (data.type !== "income" && data.type !== "expense") {
+          errors.push("Loại giao dịch không hợp lệ");
+        }
+
+        return errors;
+      }
+
+      function renderDashboard() {
+        const dashboard = calculateDashboard(getCurrentMonthTransactions());
+
+        elements.dashboard.innerHTML = `
+          <article class="rounded-lg border border-emerald-200 bg-emerald-50 p-3 sm:p-4">
+            <p class="text-sm font-medium text-emerald-800">Thu nhập</p>
+            <p class="mt-2 break-words text-xl font-semibold sm:text-2xl">${formatCurrency(dashboard.totalIncome)}</p>
+          </article>
+          <article class="rounded-lg border border-rose-200 bg-rose-50 p-3 sm:p-4">
+            <p class="text-sm font-medium text-rose-800">Chi tiêu</p>
+            <p class="mt-2 break-words text-xl font-semibold sm:text-2xl">${formatCurrency(dashboard.totalExpense)}</p>
+          </article>
+          <article class="rounded-lg border border-zinc-200 bg-white p-3 sm:p-4">
+            <p class="text-sm font-medium text-zinc-700">Số dư</p>
+            <p class="mt-2 break-words text-xl font-semibold sm:text-2xl">${formatCurrency(dashboard.balance)}</p>
+          </article>
+        `;
+      }
+
+      function renderCategories() {
+        elements.categories.innerHTML =
+          state.categories.length === 0
+            ? `<li class="text-sm text-zinc-500">Chưa có danh mục.</li>`
+            : state.categories
+                .map((cat) => {
+                  return `
+                    <li class="flex items-center justify-between gap-3 rounded-lg border border-zinc-200 px-3 py-3">
+                      <div class="min-w-0">
+                        <p class="text-sm font-medium">${cat.name}</p>
+                        <p class="text-xs text-zinc-500">Hạn mức ${formatCurrency(cat.limit)}</p>
+                      </div>
+                      <button class="delete-category h-9 shrink-0 rounded-lg px-3 text-sm text-rose-700 hover:bg-rose-50" data-id="${cat.id}" type="button">
+                        Xóa
+                      </button>
+                    </li>
+                  `;
+                })
+                .join("");
+
+        elements.categorySelect.innerHTML =
+          `<option value="">Chọn danh mục</option>` +
+          state.categories
+            .map((cat) => `<option value="${cat.id}">${cat.name}</option>`)
+            .join("");
+
+        syncCategorySelectState();
+      }
+
+      function syncCategorySelectState() {
+        const type = document.querySelector("#transaction-type").value;
+
+        if (type === "income") {
+          elements.categorySelect.value = "";
+          elements.categorySelect.disabled = true;
+          elements.categorySelect.classList.add("bg-zinc-100", "text-zinc-500");
+          return;
+        }
+
+        elements.categorySelect.disabled = false;
+        elements.categorySelect.classList.remove("bg-zinc-100", "text-zinc-500");
+      }
+
+      function renderTransactions() {
+        const transactions = [...getCurrentMonthTransactions()].sort((a, b) => {
+          if (state.selectedSort === "asc") {
+            return getTransactionSortTime(a) - getTransactionSortTime(b);
+          }
+
+          return getTransactionSortTime(b) - getTransactionSortTime(a);
+        });
+
+        elements.transactions.innerHTML =
+          transactions.length === 0
+            ? `<li class="text-sm text-zinc-500">Chưa có giao dịch trong tháng này.</li>`
+            : transactions
+                .map((tran) => {
+                  const category = state.categories.find(
+                    (cat) => cat.id === tran.categoryId,
+                  );
+                  const categoryName =
+                    tran.type === "income"
+                      ? "Thu nhập"
+                      : category !== undefined
+                        ? category.name
+                        : "Không rõ";
+                  const sign = tran.type === "income" ? "+" : "-";
+                  const amountClass =
+                    tran.type === "income" ? "text-emerald-700" : "text-rose-700";
+
+                  return `
+                    <li class="rounded-lg border border-zinc-200 p-3">
+                      <div class="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+                        <div class="min-w-0">
+                          <strong class="text-sm">${categoryName}</strong>
+                          <p class="mt-1 text-sm text-zinc-600">${tran.note || "Không có ghi chú"}</p>
+                          <small class="mt-2 block text-xs text-zinc-500">${tran.date}</small>
+                        </div>
+                        <div class="flex items-center justify-between gap-3 border-t border-zinc-100 pt-3 sm:block sm:border-t-0 sm:pt-0 sm:text-right">
+                          <span class="text-base font-semibold ${amountClass} sm:text-sm">${sign}${formatCurrency(tran.amount)}</span>
+                          <button class="delete-transaction h-9 rounded-lg px-3 text-sm text-zinc-500 hover:bg-rose-50 hover:text-rose-700 sm:mt-2 sm:block" data-id="${tran.id}" type="button">
+                            Xóa
+                          </button>
+                        </div>
+                      </div>
+                    </li>
+                  `;
+                })
+                .join("");
+      }
+
+      function renderAlerts() {
+        if (state.selectedMonth === 0) {
+          elements.alerts.innerHTML = `<li class="text-sm text-zinc-500">Chọn một tháng cụ thể để xem cảnh báo hạn mức.</li>`;
+          return;
+        }
+
+        const alerts = state.categories
+          .map((cat) => {
+            const spent = getCurrentMonthTransactions()
+              .filter((tran) => tran.categoryId === cat.id && tran.type === "expense")
+              .reduce((acc, tran) => acc + tran.amount, 0);
+
+            return {
+              categoryName: cat.name,
+              limit: cat.limit,
+              spent,
+              isOverLimit: spent > cat.limit,
+            };
+          })
+          .filter((alert) => alert.isOverLimit);
+
+        elements.alerts.innerHTML =
+          alerts.length === 0
+            ? `<li class="text-sm text-zinc-500">Không có danh mục vượt hạn mức.</li>`
+            : alerts
+                .map((alert) => {
+                  return `
+                    <li class="rounded-lg border border-amber-200 bg-amber-50 px-3 py-3">
+                      <p class="text-sm font-medium text-amber-900">${alert.categoryName}</p>
+                      <p class="mt-1 text-xs text-amber-800">${formatCurrency(alert.spent)} / ${formatCurrency(alert.limit)}</p>
+                    </li>
+                  `;
+                })
+                .join("");
+      }
+
+      function renderApp() {
+        elements.selectedMonth.value =
+          state.selectedMonth === 0 ? "" : state.selectedMonth;
+        elements.selectedYear.value = state.selectedYear;
+        elements.transactionSort.value = state.selectedSort;
+        if (elements.transactionDate.value === "") {
+          elements.transactionDate.value = getTodayValue();
+        }
+        renderDashboard();
+        renderCategories();
+        renderAlerts();
+        renderTransactions();
+      }
+
+      elements.categoryForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const formData = new FormData(event.currentTarget);
+        const name = String(formData.get("name") || "");
+        const limit = Number(formData.get("limit") || 0);
+
+        if (name.trim() === "" || limit < 0) {
+          elements.errors.textContent = "Tên danh mục không hợp lệ.";
+          return;
+        }
+
+        state = {
+          ...state,
+          categories: [
+            ...state.categories,
+            {
+              id: createId("cat"),
+              name: name.trim(),
+              limit,
+            },
+          ],
+        };
+
+        event.currentTarget.reset();
+        elements.transactionDate.value = getTodayValue();
+        elements.errors.textContent = "";
+        saveState();
+        renderApp();
+      });
+
+      elements.transactionForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const formData = new FormData(event.currentTarget);
+        const data = {
+          type: String(formData.get("type") || "expense"),
+          amount: Number(formData.get("amount") || 0),
+          categoryId:
+            String(formData.get("type") || "expense") === "income"
+              ? ""
+              : String(formData.get("categoryId") || ""),
+          note: String(formData.get("note") || ""),
+          date: String(formData.get("date") || ""),
+        };
+
+        const errors = validateTransactionInput(data);
+
+        if (errors.length > 0) {
+          elements.errors.innerHTML = errors.map((error) => `<p>${error}</p>`).join("");
+          return;
+        }
+
+        state = {
+          ...state,
+          transactions: [
+            ...state.transactions,
+            {
+              id: createId("tran"),
+              ...data,
+            },
+          ],
+        };
+
+        event.currentTarget.reset();
+        elements.transactionDate.value = getTodayValue();
+        elements.errors.textContent = "";
+        saveState();
+        renderApp();
+      });
+
+      elements.monthForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const formData = new FormData(event.currentTarget);
+        const month = Number(formData.get("month"));
+        const year = Number(formData.get("year"));
+
+        if (month < 0 || month > 12) {
+          elements.errors.textContent = "Tháng phải từ 0 đến 12.";
+          return;
+        }
+
+        state = {
+          ...state,
+          selectedMonth: Number.isNaN(month) ? 0 : month,
+          selectedYear: year,
+        };
+
+        elements.errors.textContent = "";
+        saveState();
+        renderApp();
+      });
+
+      document
+        .querySelector("#transaction-type")
+        .addEventListener("change", syncCategorySelectState);
+
+      elements.transactionSort.addEventListener("change", (event) => {
+        state = {
+          ...state,
+          selectedSort: event.currentTarget.value,
+        };
+
+        saveState();
+        renderApp();
+      });
+
+      elements.categories.addEventListener("click", (event) => {
+        const button = event.target.closest(".delete-category");
+
+        if (button === null) {
+          return;
+        }
+
+        const categoryId = button.dataset.id;
+        state = {
+          ...state,
+          categories: state.categories.filter((cat) => cat.id !== categoryId),
+          transactions: state.transactions.filter(
+            (tran) => tran.categoryId !== categoryId,
+          ),
+        };
+
+        saveState();
+        renderApp();
+      });
+
+      elements.transactions.addEventListener("click", (event) => {
+        const button = event.target.closest(".delete-transaction");
+
+        if (button === null) {
+          return;
+        }
+
+        const transactionId = button.dataset.id;
+        state = {
+          ...state,
+          transactions: state.transactions.filter(
+            (tran) => tran.id !== transactionId,
+          ),
+        };
+
+        saveState();
+        renderApp();
+      });
+
+      elements.clearData.addEventListener("click", () => {
+        state = createInitialState();
+        saveState();
+        renderApp();
+      });
+
+      renderApp();
+    </script>
+  </body>
+</html>

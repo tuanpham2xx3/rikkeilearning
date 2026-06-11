@@ -1,0 +1,13 @@
+{
+  "name": "hocbai_ts",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/demo.js",
+    "watch": "tsc -w"
+  },
+  "devDependencies": {
+    "typescript": "^6.0.3",
+    "@types/node": "^20.8.4"
+  }
+}

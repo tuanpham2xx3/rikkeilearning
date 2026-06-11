@@ -1,0 +1,26 @@
+{
+  "name": "hoc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run build && node dist/header.js",
+    "dev": "tsc --jsx react-jsx --noEmit --watch header.tsx",
+    "check": "tsc --jsx react-jsx --noEmit header.tsx",
+    "build": "tsc --jsx react-jsx --module commonjs --target ES2020 --outDir dist header.tsx",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "typescript": "^6.0.3"
+  }
+}
