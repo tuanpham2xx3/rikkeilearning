@@ -1,0 +1,173 @@
+﻿ĐỀ BÀI: XÂY DỰNG ỨNG DỤNG QUẢN LÝ CHI TIÊU CÁ NHÂN
+(E-WALLET)
+I. MỤC TIÊU
+Sinh viên phát triển một ứng dụng web Personal Finance Manager sử dụng TypeScript, Vite, lưu trữ dữ liệu cục bộ qua localStorage. Ứng dụng cho phép người dùng ghi chép thu/chi, quản lý danh mục, đặt hạn mức chi tiêu, xem báo cáo và nhận cảnh báo khi vượt ngân sách.
+II. YÊU CẦU CHỨC NĂNG CHI TIẾT
+1. Tổng quan (Dashboard)
+* Hiển thị số dư hiện tại (cập nhật realtime).
+* Thống kê tổng thu, tổng chi trong tháng được chọn.
+* Biểu đồ hoặc thanh trạng thái so sánh chi tiêu thực tế với ngân sách tổng đã đặt.
+  
+
+Hình 1: Giao diện Dashboard mẫu
+2. Quản lý danh mục (Category)
+* Người dùng tự thêm, sửa, xóa danh mục chi tiêu (VD: Ăn uống, Xăng xe, Mua sắm, Giải trí, Hóa đơn).
+* Mỗi danh mục có thể đặt hạn mức chi tiêu (limit) riêng.
+* Hiển thị danh sách danh mục dưới dạng bảng hoặc tag.
+  
+
+Hình 2: Giao diện quản lý danh mục
+3. Quản lý giao dịch (Transaction)
+* Mỗi giao dịch gồm: Số tiền (dương là thu, âm là chi), Danh mục (dropdown từ danh sách đã tạo), Ghi chú, Thời gian (ngày/tháng/năm).
+* Lịch sử giao dịch sắp xếp theo thời gian giảm dần (mới nhất lên đầu).
+* Cho phép xóa một giao dịch.
+  
+
+Hình 3:Mẫu form thêm giao dịch và bảng lịch sử
+4. Lọc theo thời gian (Time-based)
+* Bộ chọn Tháng/Năm (Month Picker).
+* Dữ liệu trên Dashboard, lịch sử, báo cáo thay đổi theo tháng được chọn.
+* Các tháng dữ liệu được lưu riêng biệt trong localStorage.
+5. Cảnh báo & Thống kê (Alert & Summary)
+* Cảnh báo trực quan (màu đỏ, icon, hoặc thông báo) khi chi tiêu trong một danh mục vượt hạn mức đã đặt.
+* Bảng tổng hợp chi tiêu các tháng (Summary Table): liệt kê tổng chi theo từng tháng, cho phép so sánh.
+  
+
+Hình 4: Ví dụ cảnh báo vượt hạn mức
+  
+
+Hình 5:Mẫu bảng tổng hợp chi tiêu các tháng
+ 
+III. YÊU CẦU KỸ THUẬT & PHI CHỨC NĂNG
+Mục
+	Yêu cầu
+	Công nghệ
+	TypeScript / Javascript, Vite / Common Html js– chỉ HTML/CSS/TS or JS thuần.
+	Dữ liệu
+	Lưu vào localStorage. Tự động lưu sau mỗi thao tác (thêm, sửa, xóa). Dữ liệu mẫu khởi tạo nếu lần đầu truy cập.
+	UI/UX
+	Minimalist, responsive (dùng Flex/Grid), màu xanh cho thu/dư dương, màu đỏ cho chi/cảnh báo. Hỗ trợ tốt trên mobile.
+	Code quality
+	Phân tách module rõ ràng: storage.ts, category.ts, transaction.ts, ui.ts, app.ts. Có kiểu dữ liệu interface/type.
+	  
+
+Hình 6: Giao diện mẫu responsive trên điện thoại
+IV. GIAO DIỆN THAM KHẢO (KHÔNG BẮT BUỘC Y HỆT)
+Sinh viên có thể tham khảo các mẫu sau (tìm kiếm với từ khóa "personal finance manager dashboard UI"):
+* Dribbble: "Expense tracker app"
+* Behance: "Personal budget UI"
+* Mẫu đơn giản: Wallet by Budgetbakers (phần web)
+Lưu ý: Không sao chép nguyên giao diện. Mục đích chính là đáp ứng đủ chức năng, code TypeScript sạch và đúng kiến trúc.
+V. ĐÁNH GIÁ (TIÊU CHÍ CHẤM ĐIỂM)
+Tiêu chí
+	Trọng số
+	Hoàn thành đủ 5 nhóm chức năng (F01-F05)
+	40%
+	TypeScript nghiêm ngặt, không dùng any, interface rõ ràng
+	20%
+	Lưu trữ localStorage ổn định, load lại không mất dữ liệu
+	15%
+	Giao diện responsive, đúng màu xanh/đỏ, cảnh báo trực quan
+	15%
+	Mã nguồn modular, dễ đọc, có comment
+	10%
+	
+
+VI. GIAO NỘP
+* Mã nguồn dạng zip hoặc link GitHub.
+* File README.md hướng dẫn cài đặt (npm install, npm run dev).
+VII. Bảng điểm:
+
+
+Mục
+	Task
+	Mô tả chi tiết
+	Điểm tối đa
+	F01. Dashboard (12 điểm)
+	F01-1
+	Hiển thị số dư hiện tại, cập nhật realtime sau mỗi giao dịch
+	4
+	F01-2
+	Hiển thị tổng thu và tổng chi của tháng đang chọn
+	4
+	F01-3
+	Hiển thị trạng thái so với ngân sách tổng (thanh tiến trình, %), có text Đạt/Vượt
+	4
+	F02. Quản lý danh mục (12 điểm)
+	F02-1
+	Thêm danh mục mới (tên)
+	2
+	F02-2
+	Sửa danh mục
+	2
+	F02-3
+	Xóa danh mục (có kiểm tra ràng buộc)
+	2
+	F02-4
+	Thiết lập hạn mức chi tiêu riêng cho từng danh mục
+	4
+	F02-5
+	Hiển thị danh sách danh mục kèm hạn mức và đã chi
+	2
+	F03. Quản lý giao dịch (14 điểm)
+	F03-1
+	Form nhập giao dịch đủ: số tiền, danh mục, ghi chú, thời gian
+	4
+	F03-2
+	Lưu đúng loại thu/chi (dấu dương/âm hoặc checkbox)
+	2
+	F03-3
+	Lịch sử giao dịch sắp xếp theo thời gian giảm dần
+	4
+	F03-4
+	Xóa giao dịch, cập nhật lại Dashboard và danh mục
+	4
+	F04. Lọc thời gian (10 điểm)
+	F04-1
+	Bộ chọn Tháng/Năm (Month Picker) hoạt động
+	4
+	F04-2
+	Dashboard, lịch sử, thống kê thay đổi theo tháng được chọn
+	4
+	F04-3
+	Dữ liệu các tháng được lưu riêng trong localStorage
+	2
+	F05. Cảnh báo & Thống kê (12 điểm)
+	F05-1
+	Cảnh báo bằng màu đỏ hoặc văn bản khi chi tiêu danh mục vượt hạn mức
+	6
+	F05-2
+	Bảng tổng hợp chi tiêu các tháng (Summary Table) – ít nhất 2 tháng
+	6
+	Yêu cầu phi chức năng & Kỹ thuật (30 điểm)
+	NFR-1
+	Sử dụng TypeScript: định nghĩa interface, không dùng any, strict mode
+	8
+	NFR-2
+	Dùng Vite, cấu hình TS đúng, chạy được dev server
+	2
+	NFR-3
+	Lưu trữ localStorage tự động sau mỗi thay đổi (thêm, sửa, xóa)
+	6
+	NFR-4
+	Kiến trúc modular: tách storage, category, transaction, ui, app (ES Modules)
+	6
+	NFR-5
+	Responsive (Grid/Flex, media query cho mobile) – layout cột dọc trên điện thoại
+	4
+	NFR-6
+	Màu sắc: xanh cho thu/số dư, đỏ cho chi/cảnh báo
+	2
+	NFR-7
+	Dữ liệu mẫu khởi tạo nếu localStorage trống (seed)
+	2
+	Hoàn thiện & Bổ sung (10 điểm)
+	EXTRA-1
+	Xử lý lỗi nhập liệu (số âm/dương, danh mục rỗng, limit không hợp lệ)
+	4
+	EXTRA-2
+	Code có comment quan trọng, README hướng dẫn cài đặt và chạy
+	3
+	EXTRA-3
+	Giao diện sạch, không lỗi console, không crash
+	3
