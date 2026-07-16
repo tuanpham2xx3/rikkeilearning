@@ -1,0 +1,1 @@
+import'./styles.css';import{get}from'./client';void get('/contacts',{q:undefined,limit:10});document.querySelector('#root')!.innerHTML='<main><h1>Resilient API Client</h1><p>Xem src/client.ts: timeout, interceptors, API helpers và dọn params.</p></main>';
