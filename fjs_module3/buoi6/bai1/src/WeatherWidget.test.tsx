@@ -1,0 +1,1 @@
+import{getWeather}from'./weatherApi';jest.mock('./weatherApi');test('mock API trả Nắng đẹp, không gọi mạng thật',async()=>{(getWeather as jest.Mock).mockResolvedValue({description:'Nắng đẹp'});await expect(getWeather()).resolves.toEqual({description:'Nắng đẹp'});expect(getWeather).toHaveBeenCalledTimes(1)});

@@ -1,0 +1,1 @@
+import{useEffect,useState}from'react';import{getWeather}from'./weatherApi';export default function WeatherWidget(){const[w,setW]=useState('Đang tải...');useEffect(()=>{getWeather().then(x=>setW(x.description))},[]);return <p>Thời tiết: {w}</p>}
