@@ -1,0 +1,1 @@
+import{filterActiveUsers}from'./users';const users=[{name:'Admin',active:true,lastLoginDate:new Date()},{name:'Guest',active:false}];test('Admin active',()=>{const result=filterActiveUsers(users);expect(result).toEqual(expect.arrayContaining([expect.objectContaining({name:'Admin',active:true})]));expect(result.some(x=>x.name==='Admin')).toBe(true)});
