@@ -1,0 +1,1 @@
+import axios from 'axios'; export type User={id:number;name:string;phone:string;email:string;address:string};const api=axios.create({baseURL:'http://localhost:3004'});export const replaceUser=(user:User)=>api.put(`/users/${user.id}`,user);export const changePhone=(id:number,phone:string)=>api.patch(`/users/${id}`,{phone});
