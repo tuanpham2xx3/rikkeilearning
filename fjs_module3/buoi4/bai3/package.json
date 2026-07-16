@@ -1,0 +1,1 @@
+{"scripts":{"dev":"vite","build":"tsc -b && vite build"},"dependencies":{"@vitejs/plugin-react":"latest","vite":"latest","typescript":"latest","react":"latest","react-dom":"latest","formik":"^2.4.6","yup":"^1.6.1"},"devDependencies":{"@types/react":"latest","@types/react-dom":"latest"}}
