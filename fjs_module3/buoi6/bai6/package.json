@@ -1,0 +1,1 @@
+{"scripts":{"test":"jest","build":"vite build","vercel-build":"npm run test && npm run build"},"devDependencies":{"jest":"^29.7.0","vite":"latest"}}
