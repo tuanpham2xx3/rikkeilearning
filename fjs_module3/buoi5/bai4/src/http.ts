@@ -1,0 +1,1 @@
+import axios from'axios';export const api=axios.create({baseURL:'http://localhost:3004'});api.interceptors.response.use(r=>r,err=>{if(axios.isAxiosError(err)&&err.response?.status===401){window.location.hash='#/login';console.warn('Phiên hết hạn, chuyển hướng đăng nhập')}return Promise.reject(err)});
