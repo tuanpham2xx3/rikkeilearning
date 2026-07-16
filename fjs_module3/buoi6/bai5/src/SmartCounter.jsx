@@ -1,0 +1,1 @@
+import{useState}from'react';export default function SmartCounter(){const[n,setN]=useState(0);return <div><b>{n}</b><button onClick={()=>setN(n+1)}>Tăng</button><button onClick={()=>setN(Math.max(0,n-1))}>Giảm</button><button onClick={()=>setN(0)}>Reset</button></div>}
