@@ -1,0 +1,4 @@
+export type InventoryItem = { id: number; name: string; quantity: number; limit: number };
+let inventory: InventoryItem[] = [{ id: 1, name: 'Bàn phím cơ', quantity: 24, limit: 100 }, { id: 2, name: 'Chuột không dây', quantity: 12, limit: 50 }, { id: 3, name: 'Màn hình 27 inch', quantity: 8, limit: 20 }];
+export async function getInventory() { await new Promise((r) => setTimeout(r, 400)); return inventory; }
+export async function updateQuantity({ id, quantity }: { id: number; quantity: number }) { await new Promise((r) => setTimeout(r, 700)); const item = inventory.find((row) => row.id === id); if (!item) throw new Error('Không tìm thấy hàng hoá'); if (quantity > item.limit) throw new Error(`Số lượng vượt hạn mức cập nhật (${item.limit})`); inventory = inventory.map((row) => row.id === id ? { ...row, quantity } : row); return item; }
