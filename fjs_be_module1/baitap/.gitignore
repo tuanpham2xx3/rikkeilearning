@@ -1,0 +1,43 @@
+# Node.js dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Environment & Credentials
+*.env
+.env.*
+!.env.example
+atlas-credentials.env
+
+# Text files (Đề bài các buổi học)
+*.txt
+
+# Build & Output
+dist/
+build/
+coverage/
+
+# Local databases & uploads
+*.sqlite3
+*.db
+*.db-journal
+uploads/
+reports/
+
+# Logs & Temp files
+logs/
+*.log
+*.tmp
+*.temp
+
+# OS & IDE files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
