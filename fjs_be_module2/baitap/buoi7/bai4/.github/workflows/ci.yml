@@ -1,0 +1,23 @@
+name: Bài 7.4 tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: fjs_be_module2/baitap/buoi7/bai4
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: fjs_be_module2/baitap/buoi7/bai4/package-lock.json
+      - run: npm ci
+      - run: npm test

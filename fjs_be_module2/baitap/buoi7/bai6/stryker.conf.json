@@ -1,0 +1,7 @@
+module.exports = {
+  testRunner: 'jest',
+  jest: { configFile: 'fjs-be-module2-jest.config.js' },
+  reporters: ['clear-text', 'html'],
+  mutate: ['src/users.service.ts'],
+  commandRunner: { command: 'npm test -- --runInBand' },
+};

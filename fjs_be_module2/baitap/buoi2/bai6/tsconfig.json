@@ -1,0 +1,3 @@
+{
+  "compilerOptions": { "module": "commonjs", "target": "ES2021", "moduleResolution": "node", "experimentalDecorators": true, "emitDecoratorMetadata": true, "strict": true, "skipLibCheck": true, "outDir": "dist", "baseUrl": ".", "paths": { "@app/database": ["libs/database/src"] } }
+}

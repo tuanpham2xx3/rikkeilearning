@@ -1,0 +1,9 @@
+{
+  "monorepo": true,
+  "root": "apps/api",
+  "projects": {
+    "api": { "type": "application", "root": "apps/api", "entryFile": "main", "sourceRoot": "apps/api/src" },
+    "admin": { "type": "application", "root": "apps/admin", "entryFile": "main", "sourceRoot": "apps/admin/src" },
+    "database": { "type": "library", "root": "libs/database", "sourceRoot": "libs/database/src", "entryFile": "index" }
+  }
+}

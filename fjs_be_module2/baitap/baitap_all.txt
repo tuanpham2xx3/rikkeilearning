@@ -1,0 +1,675 @@
+---BÀI 1
+BÀI 1: TRUY VẤN ĐA BẢNG (JOIN) VÀ THỐNG KÊ (AGGREGATION)
+
+LESSON 1: POSTGRESQL FUNDAMENTALS & CORE SQL
+
+MỨC ĐỘ KHÁ (VẬN DỤNG)
+
+BÀI 1: TRUY VẤN ĐA BẢNG (JOIN) VÀ THỐNG KÊ (AGGREGATION)
+
+Bối cảnh:
+Phòng đào tạo cần báo cáo số lượng sinh viên đăng ký của từng khóa học và điểm trung bình của khóa học đó để đánh giá chất lượng giảng dạy.
+
+Yêu cầu:
+Viết câu lệnh SELECT kết hợp JOIN 3 bảng courses, enrollments, và students. Nhóm (GROUP BY) theo tên khóa học. Cần hiển thị:
+
+Tên khóa học
+Số lượng sinh viên đã đăng ký
+Điểm trung bình (làm tròn 2 chữ số thập phân)
+Kết quả mong đợi:
+Một bảng kết quả hiển thị danh sách khóa học kèm theo số liệu thống kê chính xác, sắp xếp giảm dần theo điểm trung bình.
+Ghi chú: Chụp ảnh kết quả truy vấn để minh họa.
+
+BÀI 2: SỬ DỤNG SUBQUERY VÀ CTE (COMMON TABLE EXPRESSION)
+
+BÀI 2: SỬ DỤNG SUBQUERY VÀ CTE (COMMON TABLE EXPRESSION)
+
+Bối cảnh:
+Cần tìm ra những sinh viên có điểm GPA cao hơn điểm GPA trung bình của toàn bộ trường.
+
+Yêu cầu:
+Sử dụng mệnh đề WITH (CTE) để tính điểm GPA trung bình của toàn trường trước. Sau đó viết câu SELECT từ bảng students để lọc ra những cá nhân có điểm lớn hơn mức trung bình vừa tính.
+
+Kết quả mong đợi:
+Danh sách sinh viên xuất sắc kèm theo GPA của họ, không cần tạo bảng phụ trong DB.
+Ghi chú: Chụp ảnh kết quả truy vấn.
+
+BÀI 3: QUẢN LÝ GIAO DỊCH (TRANSACTIONS & SAVEPOINTS)
+
+BÀI 3: QUẢN LÝ GIAO DỊCH (TRANSACTIONS & SAVEPOINTS)
+
+Bối cảnh:
+Một sinh viên muốn chuyển từ khóa "Lập trình Python" sang "Cơ sở dữ liệu". Việc này yêu cầu xóa đăng ký cũ và thêm đăng ký mới. Nếu một bước thất bại, toàn bộ quá trình phải hủy bỏ.
+
+Yêu cầu:
+
+Viết một block BEGIN; ... COMMIT;.
+Trong đó, thực hiện DELETE đăng ký cũ, đặt một SAVEPOINT, rồi INSERT đăng ký mới.
+Cố tình vi phạm constraint ở bước INSERT (ví dụ: cho điểm số > 10) để gây lỗi, sau đó dùng ROLLBACK TO để cứu vãn hệ thống.
+Kết quả mong đợi:
+Chạy script không làm hỏng dữ liệu hệ thống, sinh viên vẫn giữ nguyên đăng ký khóa học cũ.
+Ghi chú: Chụp ảnh kết quả kiểm tra dữ liệu trước và sau khi chạy transaction.
+
+
+Nộp bài
+
+BÀI 4: XỬ LÝ DỮ LIỆU JSONB
+
+BÀI 4: XỬ LÝ DỮ LIỆU JSONB
+
+Bối cảnh:
+Trường học muốn lưu thêm thông tin "kỹ năng mềm" và "chứng chỉ" của sinh viên nhưng không muốn tạo bảng mới vì cấu trúc này thường xuyên thay đổi.
+
+Yêu cầu:
+
+Thêm một cột extra_info kiểu JSONB vào bảng students.
+Viết lệnh UPDATE chèn một object JSON (ví dụ: {"skills": ["Giao tiếp", "Làm việc nhóm"], "toeic": 750}) cho 2 sinh viên.
+Viết lệnh SELECT chỉ lấy những sinh viên có điểm TOEIC >= 700 từ cột JSONB này.
+Kết quả mong đợi:
+Trích xuất thành công dữ liệu nằm sâu bên trong object JSON.
+Ghi chú: Chụp ảnh kết quả SELECT.
+
+BÀI 5: PHÂN TÍCH DỮ LIỆU VỚI WINDOW FUNCTIONS
+
+BÀI 5: PHÂN TÍCH DỮ LIỆU VỚI WINDOW FUNCTIONS
+
+Bối cảnh:
+Ban giám hiệu cần xếp hạng (Ranking) sinh viên trong từng phòng ban (Department) dựa trên điểm GPA để trao học bổng.
+
+Yêu cầu:
+Viết câu lệnh SELECT sử dụng Window Function RANK() (hoặc DENSE_RANK()) kết hợp với mệnh đề PARTITION BY dept_id ORDER BY gpa DESC.
+
+Kết quả mong đợi:
+Bảng dữ liệu hiển thị: Sinh viên, Phòng ban, GPA, và "Thứ hạng trong phòng ban đó" (1, 2, 3...).
+Ghi chú: Chụp ảnh kết quả.
+
+BÀI 6: TỐI ƯU HÓA VỚI INDEXING
+
+BÀI 6: TỐI ƯU HÓA VỚI INDEXING
+
+Bối cảnh:
+Hệ thống tra cứu sinh viên qua email bắt đầu chậm đi khi lượng dữ liệu đạt 1 triệu records.
+
+Yêu cầu:
+
+Viết lệnh tạo một UNIQUE INDEX trên cột email của bảng students.
+Dùng câu lệnh EXPLAIN ANALYZE trước và sau khi tạo Index để so sánh thời gian thực thi (Execution Time).
+Viết báo cáo ngắn (2-3 dòng) giải thích kết quả.
+Kết quả mong đợi:
+Thấy rõ sự thay đổi từ "Seq Scan" (Quét toàn bảng) sang "Index Scan" và thời gian tìm kiếm giảm xuống mức mili-giây.
+Ghi chú: Chụp ảnh output của EXPLAIN ANALYZE cả 2 lần.
+
+--- BÀI 2
+
+BÀI 1: PROVIDER CUSTOM & FACTORY
+
+BÀI 1: PROVIDER CUSTOM & FACTORY
+
+Bối cảnh:
+Bạn cần tiêm (inject) một đối tượng cấu hình tùy chỉnh vào ứng dụng mà không dùng class.
+
+Yêu cầu:
+
+Tạo một file config.constants.ts chứa đối tượng { appName: 'MyNestApp', version: '1.0' }.
+Dùng cú pháp useValue trong module để cung cấp giá trị này với một injection token (ví dụ: APP_CONFIG).
+Inject token này vào AppController và hiển thị giá trị ra endpoint GET /info.
+Kết quả mong đợi:
+API trả về đúng JSON config đã cấu hình.
+Ghi chú: Chụp ảnh Postman hiển thị response.
+
+BÀI 2: MODULE RE-EXPORTING
+
+BÀI 2: MODULE RE-EXPORTING
+
+Bối cảnh:
+Tránh việc phải import lặp đi lặp lại nhiều service cơ bản.
+
+Yêu cầu:
+
+Tạo CoreModule. Bên trong khởi tạo LoggerService và DatabaseService.
+Export cả 2 service này.
+Ở UsersModule và ProductsModule, hãy chỉ import CoreModule và gọi hàm của 2 service trên.
+Kết quả mong đợi:
+Các module tính năng gọi được hàm của Core mà không dính lỗi "Cannot resolve dependency".
+Ghi chú: Không cần ảnh, chỉ cần log thành công khi chạy npm run start.
+
+
+Nộp bàiBÀI 3: XỬ LÝ CIRCULAR DEPENDENCY (PHỤ THUỘC CHÉO)
+
+BÀI 3: XỬ LÝ CIRCULAR DEPENDENCY (PHỤ THUỘC CHÉO)
+
+Bối cảnh:
+UsersService cần gọi AuthService để cấp token, nhưng AuthService lại cần gọi UsersService để kiểm tra mật khẩu.
+
+Yêu cầu:
+
+Tạo ra kịch bản phụ thuộc vòng tròn giữa 2 module này.
+Dùng hàm forwardRef() của NestJS ở cả mảng imports (của Module) và trong @Inject() (của Service) để phá vỡ vòng lặp.
+Kết quả mong đợi:
+Ứng dụng khởi động thành công (bootstrap) mà không văng lỗi "Circular dependency detected".
+Ghi chú: Chụp ảnh terminal khi start thành công.
+
+
+Nộp bàiBÀI 4: KHỞI TẠO DYNAMIC MODULE
+
+BÀI 4: KHỞI TẠO DYNAMIC MODULE
+
+Bối cảnh:
+Xây dựng một module có thể thay đổi cấu hình từ bên ngoài.
+
+Yêu cầu:
+
+Viết một ConfigModule chứa method static forRoot(options: { folder: string }).
+Method này trả về một DynamicModule.
+Tùy thuộc vào folder truyền vào, ConfigService bên trong sẽ thay đổi hành vi tương ứng.
+Kết quả mong đợi:
+Hiểu được cơ chế hoạt động của các thư viện như @nestjs/config hay @nestjs/typeorm.
+Ghi chú: Không cần ảnh, chỉ cần code đúng pattern.
+
+
+Nộp bàiBÀI 5: ASYNCHRONOUS PROVIDER (KHỞI TẠO BẤT ĐỒNG BỘ)
+
+BÀI 5: ASYNCHRONOUS PROVIDER (KHỞI TẠO BẤT ĐỒNG BỘ)
+
+Bối cảnh:
+Bạn chỉ muốn server khởi động SAU KHI đã kết nối thành công tới một dịch vụ bên thứ 3.
+
+Yêu cầu:
+
+Sử dụng cú pháp useFactory kết hợp với async/await.
+Viết một hàm giả lập delay(3000ms) trả về cấu hình kết nối.
+Đưa nó vào mảng providers.
+Kết quả mong đợi:
+Khi chạy npm run start, terminal sẽ "đứng đợi" 3 giây trước khi in ra dòng chữ "Nest application successfully started".
+Ghi chú: Chụp ảnh terminal ghi nhận thời gian chờ.
+
+BÀI 6: XÂY DỰNG KIẾN TRÚC MONOREPO
+
+BÀI 6: XÂY DỰNG KIẾN TRÚC MONOREPO
+
+Bối cảnh:
+Công ty muốn tách backend thành 2 ứng dụng: API chính và Admin Panel, dùng chung phần database.
+
+Yêu cầu:
+
+Tìm hiểu và sử dụng lệnh nest generate app admin để chuyển dự án hiện tại thành chuẩn Workspace (Monorepo).
+Chuyển DatabaseModule vào thư mục libs dùng chung.
+Kết quả mong đợi:
+Cấu trúc dự án có cả thư mục apps/ và libs/. Cả 2 app đều chạy được và xài chung code thư viện.
+Ghi chú: Chụp ảnh cây thư mục dự án.
+
+--- BÀI 3
+BÀI 1: SECURITY MIDDLEWARE: CHẶN IP SPAM
+
+BÀI 1: SECURITY MIDDLEWARE: CHẶN IP SPAM
+
+Bối cảnh:
+Tránh việc một IP gọi API liên tục.
+
+Yêu cầu:
+
+Viết một IpBlockMiddleware.
+Lấy địa chỉ IP từ req.ip.
+Nếu IP này thuộc một danh sách "blacklist" (mảng tĩnh), hãy dùng res.status(403).send(...) để chặn request không cho đi tiếp.
+Nếu không, gọi next().
+Kết quả mong đợi:
+Khi thêm ::1 (localhost) vào blacklist, mọi request thử nghiệm đều bị chặn từ vòng gửi xe.
+Ghi chú: Chụp ảnh Postman hiển thị 403.
+
+
+Nộp bài
+BÀI 2: CUSTOM EXCEPTION CHO BUSINESS RULE
+
+BÀI 2: CUSTOM EXCEPTION CHO BUSINESS RULE
+
+Bối cảnh:
+HttpException có sẵn thì tốt, nhưng không phản ánh ngữ nghĩa nghiệp vụ.
+
+Yêu cầu:
+
+Kế thừa lớp HttpException, tạo class InsufficientFundsException (Ném ra lỗi 400 và message: "Số dư tài khoản không đủ để thực hiện giao dịch").
+Dùng nó trong một API chuyển tiền.
+Kết quả mong đợi:
+Tái sử dụng được tên lỗi chuyên nghiệp thay vì phải hard-code message mọi nơi.
+Ghi chú: Chụp ảnh response từ Postman.BÀI 3: INTERCEPTOR FORMAT RESPONSE
+
+BÀI 3: INTERCEPTOR FORMAT RESPONSE
+
+Bối cảnh:
+Exception Filter lo phần Lỗi, vậy phần Thành Công ai lo?
+
+Yêu cầu:
+
+Viết một TransformInterceptor implements NestInterceptor.
+Dùng RxJS map() để bọc toàn bộ dữ liệu trả về từ Controller vào trong một object:
+{ statusCode: 200, data: <kết quả của controller>, timestamp: ... }.
+Kết quả mong đợi:
+Bất kỳ API nào trả về dữ liệu đều bị tự động format lại theo khung JSON chuẩn của công ty.
+Ghi chú: Chụp ảnh response từ Postman.BÀI 4: OWNERSHIP GUARD (KIỂM TRA QUYỀN SỞ HỮU)
+
+BÀI 4: OWNERSHIP GUARD (KIỂM TRA QUYỀN SỞ HỮU)
+
+Bối cảnh:
+Sinh viên có quyền "user" có thể xóa bài viết, nhưng chỉ được phép xóa bài của chính mình.
+
+Yêu cầu:
+
+Viết OwnershipGuard.
+Trích xuất userId từ req.user (giả lập) và resourceId từ req.params.id.
+Nếu hai ID này không trùng khớp, ném ra lỗi ForbiddenException.
+Kết quả mong đợi:
+Logic phân quyền dựa trên resource động, không chỉ dựa trên role tĩnh.
+Ghi chú: Chụp ảnh Postman khi test với ID khác.BÀI 5: RATE LIMITING CƠ BẢN (VỚI GUARD HOẶC MIDDLEWARE)
+
+BÀI 5: RATE LIMITING CƠ BẢN (VỚI GUARD HOẶC MIDDLEWARE)
+
+Bối cảnh:
+Giới hạn mỗi IP chỉ được gọi 10 request/phút.
+
+Yêu cầu:
+
+Tạo một Map lưu trữ in-memory { 'ip': { count, resetTime } }.
+Viết Guard kiểm tra nếu IP vượt quá 10 request trong 1 phút thì trả về lỗi 429 (Too Many Requests).
+Kết quả mong đợi:
+Dùng Postman Runner bắn 15 request liên tục, 5 request cuối phải bị chặn.
+Ghi chú: Chụp ảnh Postman hiển thị 429.BÀI 6: XỬ LÝ LỖI CƠ SỞ DỮ LIỆU TẬP TRUNG
+
+BÀI 6: XỬ LÝ LỖI CƠ SỞ DỮ LIỆU TẬP TRUNG
+
+Bối cảnh:
+Khi PostgreSQL vi phạm Unique Constraint (ví dụ trùng email), nó văng lỗi số 23505. Cấm để lộ lỗi này ra cho client.
+
+Yêu cầu:
+
+Mở rộng AllExceptionsFilter.
+Kiểm tra nếu exception có code === '23505', hãy trả về lỗi 400 Bad Request với message thân thiện: "Dữ liệu này đã tồn tại trong hệ thống".
+Kết quả mong đợi:
+Frontend nhận được JSON báo lỗi thân thiện thay vì stack trace của thư viện ORM/Database.
+Ghi chú: Chụp ảnh response từ Postman.
+
+---BÀI 4
+BÀI 1: DTO VALIDATION NÂNG CAO
+
+BÀI 1: DTO VALIDATION NÂNG CAO
+
+Bối cảnh:
+Form đăng ký yêu cầu mật khẩu phải mạnh và số điện thoại phải đúng định dạng VN.
+
+Yêu cầu:
+
+Trong CreateUserDto, sử dụng @Matches() để ép mật khẩu phải có ít nhất 1 chữ hoa, 1 chữ thường, 1 số (regex).
+Viết message lỗi tùy chỉnh bằng tiếng Việt.
+Kết quả mong đợi:
+Gửi mật khẩu "123456" bị chặn và trả đúng câu báo lỗi tiếng Việt đã cấu hình.
+Ghi chú: Chụp ảnh response.BÀI 2: ADVANCED QUERY PARAMETER (PAGINATION & SORT)
+
+BÀI 2: ADVANCED QUERY PARAMETER (PAGINATION & SORT)
+
+Bối cảnh:
+API lấy danh sách cần hỗ trợ phân trang và sắp xếp.
+
+Yêu cầu:
+
+Tạo PaginationDto chứa page, limit, sortBy, sortOrder.
+Dùng class-transformer (@Type(() => Number)) để tự ép kiểu các tham số truyền qua URL từ String thành Number.
+Kết quả mong đợi:
+Dữ liệu nhận trong controller đã biến thành Number hợp lệ.
+Ghi chú: In ra console để kiểm tra, chụp ảnh terminal.
+
+
+Nộp bàiBÀI 3: GỘP DTO VỚI INTERSECTIONTYPE
+
+BÀI 3: GỘP DTO VỚI INTERSECTIONTYPE
+
+Bối cảnh:
+API cập nhật bài viết cần chứa thông tin bài viết VÀ thông tin phân quyền.
+
+Yêu cầu:
+
+Dùng IntersectionType() kết hợp UpdatePostDto và AdditionalPrivilegesDto thành một class mới.
+Trải nghiệm việc NestJS gộp Validation rules của cả hai class.
+Kết quả mong đợi:
+Controller bắt được dữ liệu cần thiết của cả hai loại payload.
+Ghi chú: Chụp ảnh request/response.
+
+
+Nộp bàiBÀI 4: CUSTOM VALIDATOR DECORATOR
+
+BÀI 4: CUSTOM VALIDATOR DECORATOR
+
+Bối cảnh:
+Cần kiểm tra xem "Ngày kết thúc" có lớn hơn "Ngày bắt đầu" không.
+
+Yêu cầu:
+
+Nghiên cứu tài liệu class-validator để viết một Custom Validation Decorator @IsAfterDate('startDate').
+Gắn nó vào trường endDate của DTO.
+Kết quả mong đợi:
+Khả năng tự mở rộng rule kiểm tra dữ liệu thay vì phụ thuộc vào thư viện có sẵn.
+Ghi chú: Test gửi payload có endDate < startDate, chụp ảnh response.
+
+
+Nộp bàiBÀI 5: HATEOAS (HYPERMEDIA) RESPONSE
+
+BÀI 5: HATEOAS (HYPERMEDIA) RESPONSE
+
+Bối cảnh:
+Đưa API lên chuẩn RMM Level 3.
+
+Yêu cầu:
+Khi trả về thông tin chi tiết một Product (GET /products/:id), hãy bọc dữ liệu kèm theo mảng _links. Mảng này chứa các URL gợi ý hành động tiếp theo: self, update, delete, buy.
+
+Kết quả mong đợi:
+Trả về JSON chuẩn Hypermedia giúp Frontend tự khám phá API mà không cần hardcode URL.
+Ghi chú: Chụp ảnh response.
+
+
+Nộp bàiBÀI 6: XỬ LÝ UPLOAD FILE CHUẨN REST
+
+BÀI 6: XỬ LÝ UPLOAD FILE CHUẨN REST
+
+Bối cảnh:
+API cần nhận ảnh đại diện từ client.
+
+Yêu cầu:
+
+Sử dụng FileInterceptor (được bọc từ Multer) cho một route POST /users/:id/avatar.
+Kiểm tra chỉ cho phép file đuôi .png hoặc .jpg và tối đa 2MB (Gợi ý: Dùng ParseFilePipe).
+Kết quả mong đợi:
+Server lưu được file ảnh hợp lệ và báo lỗi nếu file là PDF hoặc quá dung lượng.
+Ghi chú: Chụp ảnh Postman khi upload thành công và khi upload file sai.
+
+
+Nộp bài
+
+---BÀI 5
+BÀI 1: SỬ DỤNG ENUM TRONG GRAPHQL
+
+BÀI 1: SỬ DỤNG ENUM TRONG GRAPHQL
+
+Bối cảnh:
+Sản phẩm có các trạng thái cố định: IN_STOCK, OUT_OF_STOCK, DISCONTINUED.
+
+Yêu cầu:
+
+Định nghĩa một enum TypeScript.
+Sử dụng hàm registerEnumType() của @nestjs/graphql để đăng ký nó vào schema.
+Đặt trường status trong Product model sử dụng enum này.
+Kết quả mong đợi:
+GraphQL schema sinh ra có chứa enum ProductStatus { ... }.
+Ghi chú: Mở file schema.gql và chụp ảnh.BÀI 2: NESTED INPUT TYPES
+
+BÀI 2: NESTED INPUT TYPES
+
+Bối cảnh:
+Khi tạo một Đơn hàng (Order), client sẽ gửi kèm danh sách các Sản phẩm (OrderItems).
+
+Yêu cầu:
+
+Tạo CreateOrderInput chứa mảng [CreateOrderItemInput].
+Thể hiện quan hệ này bằng code-first decorators.
+Kết quả mong đợi:
+Mutation trên GraphQL Playground nhận đầu vào lồng nhau mượt mà.
+Ghi chú: Chụp ảnh Playground với mutation.
+
+
+Nộp bàiBÀI 3: UNION TYPES (TRUY VẤN ĐA HÌNH)
+
+BÀI 3: UNION TYPES (TRUY VẤN ĐA HÌNH)
+
+Bối cảnh:
+API tìm kiếm search cần trả về cả bài viết (Post) lẫn người dùng (User).
+
+Yêu cầu:
+
+Định nghĩa một SearchResultUnion bằng hàm createUnionType().
+Viết một resolver trả về ngẫu nhiên 1 Post và 1 User trong cùng một mảng.
+Kết quả mong đợi:
+Học cách dùng Fragment (... on User) khi query trên GraphQL Playground.
+Ghi chú: Chụp ảnh Playground với fragment.BÀI 4: CUSTOM SCALAR TYPE (KIỂU DỮ LIỆU TỰ ĐỊNH NGHĨA)
+
+BÀI 4: CUSTOM SCALAR TYPE (KIỂU DỮ LIỆU TỰ ĐỊNH NGHĨA)
+
+Bối cảnh:
+Mặc định GraphQL chỉ có String, Int... Bạn cần một kiểu dữ liệu chuyên biệt để validate Email.
+
+Yêu cầu:
+
+Kế thừa class GraphQLScalarType.
+Viết logic serialize, parseValue, parseLiteral để đảm bảo chuỗi truyền vào phải có chữ @.
+Kết quả mong đợi:
+Bất kỳ field nào gán kiểu EmailScalar nếu nhập sai định dạng sẽ bị văng lỗi ngay tầng GraphQL trước khi vào Resolver.
+Ghi chú: Chụp ảnh Playground hiển thị lỗi.BÀI 5: GIẢI QUYẾT N+1 BẰNG DATALOADER
+
+BÀI 5: GIẢI QUYẾT N+1 BẰNG DATALOADER
+
+Bối cảnh:
+Đây là lỗi chí tử của GraphQL.
+
+Yêu cầu:
+
+Tìm hiểu và cài đặt package dataloader.
+Viết một file author.loader.ts giúp gom (batch) các lệnh lấy tác giả.
+Gắn DataLoader vào context của GraphQLModule hoặc dùng thư viện @nestjs/dataloader.
+Kết quả mong đợi:
+Gọi query lấy 100 Posts kèm theo Author, console database log chỉ hiện ĐÚNG 2 câu SELECT (thay vì 101 câu).
+Ghi chú: Chụp ảnh terminal log để so sánh. BÀI 6: GRAPHQL SUBSCRIPTIONS (REAL-TIME)
+
+BÀI 6: GRAPHQL SUBSCRIPTIONS (REAL-TIME)
+
+Bối cảnh:
+Gửi thông báo realtime khi có một sản phẩm mới được tạo.
+
+Yêu cầu:
+
+Bật installSubscriptionHandlers: true trong GraphQLModule.
+Sử dụng PubSub (từ graphql-subscriptions).
+Trong Mutation Create, gọi pubsub.publish().
+Viết hàm @Subscription().
+Kết quả mong đợi:
+Trên giao diện Playground, kết nối thành công WebSocket và tự động nhận log JSON khi có người khác tạo product.
+Ghi chú: Chụp ảnh Playground hiển thị subscription.
+
+--- BÀI 6 
+
+BÀI 1: CUSTOMIZING JWT PAYLOAD
+
+BÀI 1: CUSTOMIZING JWT PAYLOAD
+
+Bối cảnh:
+Token mặc định quá rỗng, nhưng không được phép bỏ thông tin mật khẩu vào.
+
+Yêu cầu:
+
+Sửa đổi AuthService.login().
+Thêm trường departmentId và avatarUrl vào payload của JWT.
+Ký token ra và decode ngược lại tại jwt.io để nộp bằng chứng.
+Kết quả mong đợi:
+Token chứa thêm dữ liệu tùy chỉnh, giúp frontend giảm bớt request lấy thông tin cá nhân.
+Ghi chú: Chụp ảnh jwt.io decode.BÀI 2: MÃ HÓA PASSWORD BẰNG ARGON2
+
+BÀI 2: MÃ HÓA PASSWORD BẰNG ARGON2
+
+Bối cảnh:
+Argon2 đang được khuyến nghị dùng thay thế bcrypt vì an toàn hơn trước các cuộc tấn công bằng GPU.
+
+Yêu cầu:
+
+Gỡ thư viện bcrypt, cài thư viện argon2.
+Thay thế toàn bộ hàm hash và verify trong AuthService sang API của argon2.
+Kết quả mong đợi:
+Tính năng Login/Register tiếp tục chạy trơn tru mà không làm thay đổi Logic Controller.
+Ghi chú: Chụp ảnh terminal khi test login thành công.
+
+
+Nộp bàiBÀI 3: TRIỂN KHAI REFRESH TOKEN ROTATION
+
+BÀI 3: TRIỂN KHAI REFRESH TOKEN ROTATION
+
+Bối cảnh:
+Access Token hết hạn sau 15 phút, yêu cầu user đăng nhập lại là thảm họa UX.
+
+Yêu cầu:
+
+Cấp thêm một chuỗi refresh_token ngẫu nhiên (hoặc JWT dài hạn) lưu vào Database.
+Viết API POST /auth/refresh nhận Refresh Token đó, kiểm tra DB, và trả về Access Token mới.
+Kết quả mong đợi:
+Token có thể được "gia hạn" mượt mà theo chuẩn bảo mật.
+Ghi chú: Chụp ảnh Postman gọi refresh token.
+
+
+Nộp bàiBÀI 4: BÓC TÁCH PASSWORD KHỎI RESPONSE (SERIALIZATION)
+
+BÀI 4: BÓC TÁCH PASSWORD KHỎI RESPONSE (SERIALIZATION)
+
+Bối cảnh:
+Đôi khi sơ ý viết return user;, API sẽ làm lậu cột password ra ngoài.
+
+Yêu cầu:
+
+Sử dụng ClassSerializerInterceptor của NestJS.
+Thêm decorator @Exclude() vào trường password trong Entity/Class mô hình.
+Bật interceptor trên global hoặc controller.
+Kết quả mong đợi:
+Mọi API trả về đối tượng User đều tự động "biến mất" trường password.
+Ghi chú: Chụp ảnh response từ Postman không có password
+
+
+Nộp bàiBÀI 5: TOKEN BLACKLISTING (ĐĂNG XUẤT THẬT SỰ)
+
+BÀI 5: TOKEN BLACKLISTING (ĐĂNG XUẤT THẬT SỰ)
+
+Bối cảnh:
+JWT là stateless. Xóa JWT ở frontend không làm token đó hết hạn trên server. Nếu bị trộm, hacker vẫn xài được.
+
+Yêu cầu:
+
+Viết API POST /auth/logout.
+Khi gọi, lưu Access Token hiện tại vào một tập hợp "Blacklist" (Có thể dùng mảng in-memory, nâng cao dùng Redis).
+Chỉnh sửa JwtStrategy kiểm tra nếu token nằm trong blacklist thì ném lỗi Unauthorized.
+Kết quả mong đợi:
+Chặn đứng tức thì những token đã "đăng xuất" dù chúng còn hạn.
+Ghi chú: Chụp ảnh Postman gọi API sau khi logout bị 401.
+
+
+Nộp bàiBÀI 6: PHÂN QUYỀN ABAC (ATTRIBUTE-BASED ACCESS CONTROL)
+
+BÀI 6: PHÂN QUYỀN ABAC (ATTRIBUTE-BASED ACCESS CONTROL)
+
+Bối cảnh:
+RBAC (Role) chỉ giải quyết bài toán cấp bậc. Làm sao để Nhân viên A không thể xem lương của Nhân viên B (Dù cả 2 cùng là Role USER)?
+
+Yêu cầu:
+
+Nghiên cứu thư viện CASL (@casl/ability).
+Viết logic quy định User can Read/Update Salary if User.id === Salary.ownerId.
+Tích hợp CaslAbilityFactory vào một Guard.
+Kết quả mong đợi:
+Phân quyền tới độ hạt (fine-grained), tùy chỉnh được theo thuộc tính dữ liệu.
+Ghi chú: Chụp ảnh Postman test với 2 user khác nhau.
+
+
+Nộp bài
+
+--- BÀI 7
+BÀI 1: DOCUMENTING PHỨC TẠP VỚI SWAGGER
+
+BÀI 1: DOCUMENTING PHỨC TẠP VỚI SWAGGER
+
+Bối cảnh:
+Các API Upload file và Pagination cần tài liệu rõ ràng.
+
+Yêu cầu:
+
+Sử dụng @ApiQuery để document các tham số phân trang.
+Sử dụng @ApiConsumes('multipart/form-data') và @ApiBody() để document API upload file (cho phép hiện nút "Chọn file" trên Swagger UI).
+Kết quả mong đợi:
+Người dùng có thể đính kèm file ảnh và test ngay trên giao diện Swagger.
+Ghi chú: Chụp ảnh Swagger UI có nút upload.
+
+
+Nộp bàiBÀI 2: UNIT TEST EDGE CASES (TRƯỜNG HỢP NGOẠI LỆ)
+
+BÀI 2: UNIT TEST EDGE CASES (TRƯỜNG HỢP NGOẠI LỆ)
+
+Bối cảnh:
+Không chỉ test luồng thành công (happy path), Senior dev luôn test luồng lỗi.
+
+Yêu cầu:
+
+Viết Unit test cho phương thức create trong UsersService.
+Mô phỏng (Mock) việc Database ném ra lỗi trùng email.
+Sử dụng expect(async () => {...}).rejects.toThrow(ConflictException) để khẳng định rằng Service của bạn biết cách bắt và ném ra đúng lỗi HTTP.
+Kết quả mong đợi:
+Bài test hiển thị xanh (PASS) khi ngoại lệ được xử lý hoàn hảo.
+Ghi chú: Chụp ảnh terminal hiển thị PASS.
+
+ BÀI 3: SETUP LUỒNG E2E TESTING KẾT HỢP AUTHENTICATION
+
+BÀI 3: SETUP LUỒNG E2E TESTING KẾT HỢP AUTHENTICATION
+
+Bối cảnh:
+Các endpoint bị khóa bởi @UseGuards(JwtAuthGuard) sẽ trả về 401 nếu dùng E2E Test thông thường.
+
+Yêu cầu:
+Trong file users.e2e-spec.ts:
+
+Bước 1: Gửi 1 request POST đến /auth/login để lấy access_token.
+Bước 2: Dùng supertest gắn token này vào header (.set('Authorization', 'Bearer ' + token)) để thực hiện GET /users/profile.
+Kết quả mong đợi:
+E2E test vượt qua chu trình bảo mật của hệ thống và trả về 200 OK.
+Ghi chú: Chụp ảnh terminal hiển thị PASS.
+
+
+Nộp bàiBÀI 4: TỰ ĐỘNG HÓA TEST VỚI GITHUB ACTIONS
+
+BÀI 4: TỰ ĐỘNG HÓA TEST VỚI GITHUB ACTIONS
+
+Bối cảnh:
+Dự án cần chạy test tự động mỗi khi có người push code lên để phát hiện bug.
+
+Yêu cầu:
+
+Tạo thư mục .github/workflows và thêm file ci.yml.
+Cấu hình workflow để mỗi khi Push hoặc Pull Request vào nhánh main, Github sẽ tự động chạy lệnh npm install và npm run test.
+Kết quả mong đợi:
+Github repo xuất hiện dấu tích xanh báo hiệu Continuous Integration (CI) chạy test thành công.
+Ghi chú: Chụp ảnh Github Actions hiển thị build thành công.
+
+
+Nộp bàiBÀI 5: E2E TESTING VỚI TESTCONTAINERS (CƠ SỞ DỮ LIỆU THẬT)
+
+
+BÀI 5: E2E TESTING VỚI TESTCONTAINERS (CƠ SỞ DỮ LIỆU THẬT)
+
+Bối cảnh:
+E2E test đôi khi thất bại khi chạy trên máy chủ khác do thiếu Database, việc Mock DB ở E2E làm giảm độ chân thực.
+
+Yêu cầu:
+
+Tìm hiểu package testcontainers-node.
+Viết script trong hàm beforeAll() của Jest để tự động spin-up một Docker container chạy PostgreSQL thật.
+Cho NestJS kết nối vào DB này.
+Dùng afterAll() để tự dọn dẹp container khi test xong.
+Kết quả mong đợi:
+Có một môi trường E2E chuẩn Enterprise: Test chạy song song không sợ dính dữ liệu rác, không cần cài PostgreSQL lên máy thật vẫn test được.
+Ghi chú: Chụp ảnh terminal hiển thị PASS.
+
+
+Nộp bàiBÀI 6: TRIỂN KHAI MUTATION TESTING
+
+BÀI 6: TRIỂN KHAI MUTATION TESTING
+
+Bối cảnh:
+Coverage 100% không có nghĩa là test có chất lượng. Mutation testing sẽ phá hoại (mutate) source code của bạn (ví dụ: đổi dấu > thành <) để xem các bộ test có "bắt" được sự thay đổi đó không.
+
+Yêu cầu:
+
+Cài đặt package Stryker Mutator cho dự án NestJS.
+Chạy stryker trên UsersService và xuất report.
+Kết quả mong đợi:
+Hiểu được khái niệm Mutation Score và tìm ra những bài Unit Test nào đang được viết "cho có" (không có giá trị assertion).
+Ghi chú: Chụp ảnh báo cáo Stryker.
+
+
+
